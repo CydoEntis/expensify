@@ -98,8 +98,6 @@ const ExpenseForm = () => {
 					value={typeValue}
 				/>
 				{typeHasError && <p>Please select a type.</p>}
-			</div>
-			<div>
 				<input
 					type="text"
 					placeholder="Name"
@@ -108,8 +106,6 @@ const ExpenseForm = () => {
 					value={nameValue}
 				/>
 				{nameHasError && <p>Please don't leave name empty.</p>}
-			</div>
-			<div>
 				<input
 					type="number"
 					min="0.01"
@@ -120,8 +116,6 @@ const ExpenseForm = () => {
 					value={costValue}
 				/>
 				{costHasError && <p>Please don't leave cost empty.</p>}
-			</div>
-			<div>
 				<input
 					type="date"
 					min="01/01/2021"
@@ -133,6 +127,9 @@ const ExpenseForm = () => {
 				/>
 				{dateHasError && <p>Please select a valid date.</p>}
 			</div>
+			<div>
+				<button type="submit">Add Expense</button>
+			</div>
 			{expensesCtx.expenses.map((expense) => (
 				<div key={expense.id}>
 					<p>{expense.type}</p>
@@ -141,7 +138,6 @@ const ExpenseForm = () => {
 					<p>{expense.date}</p>
 				</div>
 			))}
-			<button>Add Expense</button>
 		</form>
 	);
 };
