@@ -8,8 +8,6 @@ const ExpensesContextProvider = ({ children }) => {
 		setExpenses((prevExpenses) => {
 			return [expense, ...prevExpenses];
 		});
-
-		console.log(expenses);
 	};
 
 	const removeExpenseHandler = (id) => {

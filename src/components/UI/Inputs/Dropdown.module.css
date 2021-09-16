@@ -1,0 +1,50 @@
+.dropdown {
+	width: 100%;
+	min-height: 1.5rem;
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+	margin-top: 0.5rem;
+	padding: 0.5rem;
+	color: #fff;
+	background: #21cd9a;
+}
+
+.dropdown__header {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	font-size: 1.1rem;
+	cursor: pointer;
+}
+
+.dropdown__list {
+	width: 100%;
+	max-height: 215px;
+	overflow-y: auto;
+	position: absolute;
+	top: 1.8rem;
+	left: 0;
+	padding: 0;
+	margin: 0;
+	margin-top: 0.5rem;
+}
+
+.dropdown__item {
+	list-style-type: none;
+	border-bottom: 2px solid #111620;
+}
+
+.dropdown__item button {
+	display: flex;
+	justify-content: space-between;
+	background: #21cd9a;
+	background-color: #1a2333;
+
+	color: #fff;
+	font-size: 16px;
+	padding: 0.5rem;
+	border: none;
+	width: 100%;
+	text-align: left;
+}
