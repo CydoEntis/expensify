@@ -1,0 +1,21 @@
+.expenses-filter {
+	height: 10vh;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 1.25rem 1.25rem 0 0;
+	background: rgb(143, 180, 80);
+	color: rgb(6, 39, 10);
+}
+
+.expense-filter--dropdown {
+	margin-left: 0.5rem;
+	width: 85px;
+	background-color: rgb(120, 146, 57);
+	color: rgb(6, 39, 10);
+	/* font-weight: bold; */
+	border-radius: 1.25rem;
+	text-align: center;
+	padding: 0.2rem 0.2rem;
+}

@@ -1,0 +1,12 @@
+.expenses {
+	/* position: absolute;
+	bottom: 0; */
+	border-radius: 1.25rem 1.25rem 0 0;
+	padding: 0.5rem;
+	padding-bottom: 2.5rem;
+	height: 65vh;
+	width: 100%;
+	background-color: #fff;
+	overflow: scroll;
+	z-index: 99;
+}

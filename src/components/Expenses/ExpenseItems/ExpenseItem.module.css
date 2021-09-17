@@ -1,0 +1,58 @@
+.expense-item {
+	display: flex;
+	margin: 0.2rem 0;
+}
+
+.expense-item--container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 0 0.2rem;
+}
+
+.expense-item--flex {
+	display: flex;
+	justify-content: space-between;
+}
+
+.expense-item--wrapper {
+	display: flex;
+}
+
+.expense-item__type {
+	color: #8f8f8f;
+	font-size: 1rem;
+	padding: 0.1rem 0;
+}
+
+.expense-item__name {
+	font-size: 1.25rem;
+	text-align: left;
+}
+
+.expense-item__cost {
+	font-size: 1.1rem;
+	color: #9e301c;
+	text-align: right;
+}
+
+.expense-item__date {
+	color: #8f8f8f;
+	text-align: right;
+	font-style: italic;
+	font-size: 0.75rem;
+}
+
+.expense-item--delete-btn {
+	/* color: #f5f5f5; */
+	/* background: rgb(255, 81, 81); */
+	color: #8f8f8f;
+	border: none;
+	outline: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 2rem;
+	font-size: 1.5rem;
+	padding: 0 0.5rem;
+}

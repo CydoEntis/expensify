@@ -1,7 +1,12 @@
 import React, { useContext } from "react";
 import useInput from "../../hooks/use-input";
+
+import Modal from "../UI/Modals/Modal";
 import ExpensesContext from "../../contexts/ExpensesContext";
 import Dropdown from "../UI/Inputs/Dropdown";
+import Button from "../UI/Buttons/Button";
+
+import styles from "./ExpenseForm.module.css";
 
 const TYPES = [
 	{ id: 1, value: "Bill" },
@@ -16,7 +21,7 @@ const TYPES = [
 
 const isNotEmpty = (value) => value.trim() !== "";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
 	const expensesCtx = useContext(ExpensesContext);
 
 	const {
@@ -79,68 +84,72 @@ const ExpenseForm = () => {
 			type: typeValue,
 			name: nameValue,
 			cost: costValue,
-			date: dateValue,
+			date: new Date(dateValue),
 		};
 
 		expensesCtx.addExpense(newExpense);
-
+		props.onClose();
 		resetForm();
 	};
 
 	return (
-		<form onSubmit={submitHandler}>
-			<div>
-				<Dropdown
-					type="text"
-					placeholder="Type"
-					types={TYPES}
-					typeId={selectionId}
-					onChange={typeChangeHandler}
-					onBlur={typeBlurHandler}
-					value={typeValue}
-				/>
-				{typeHasError && <p>Please select a type.</p>}
-				<input
-					type="text"
-					placeholder="Name"
-					onChange={nameChangeHandler}
-					onBlur={nameBlurHandler}
-					value={nameValue}
-				/>
-				{nameHasError && <p>Please don't leave name empty.</p>}
-				<input
-					type="number"
-					min="0.01"
-					step="0.01"
-					placeholder="Cost"
-					onChange={costChangeHandler}
-					onBlur={costBlurHandler}
-					value={costValue}
-				/>
-				{costHasError && <p>Please don't leave cost empty.</p>}
-				<input
-					type="date"
-					min="01/01/2021"
-					max="12/31/2100"
-					placeholder="Name"
-					onChange={dateChangeHandler}
-					onBlur={dateBlurHandler}
-					value={dateValue}
-				/>
-				{dateHasError && <p>Please select a valid date.</p>}
-			</div>
-			<div>
-				<button type="submit">Add Expense</button>
-			</div>
-			{expensesCtx.expenses.map((expense) => (
-				<div key={expense.id}>
-					<p>{expense.type}</p>
-					<p>{expense.name}</p>
-					<p>{expense.cost}</p>
-					<p>{expense.date}</p>
+		<Modal onClose={props.onClose}>
+			<h1 className={styles["expense-form__title"]}>Add An Expense</h1>
+			<form className={styles["expense-form"]} onSubmit={submitHandler}>
+				<div>
+					<Dropdown
+						className={styles["expense-form__input"]}
+						type="text"
+						placeholder="Type"
+						types={TYPES}
+						typeId={selectionId}
+						onChange={typeChangeHandler}
+						onBlur={typeBlurHandler}
+						value={typeValue}
+					/>
+					{typeHasError && <p>Please select a type.</p>}
+					<input
+						className={styles["expense-form__input"]}
+						type="text"
+						placeholder="Name"
+						onChange={nameChangeHandler}
+						onBlur={nameBlurHandler}
+						value={nameValue}
+					/>
+					{nameHasError && <p>Please don't leave name empty.</p>}
+					<input
+						className={styles["expense-form__input"]}
+						type="number"
+						min="0.01"
+						step="0.01"
+						placeholder="Cost"
+						onChange={costChangeHandler}
+						onBlur={costBlurHandler}
+						value={costValue}
+					/>
+					{costHasError && <p>Please don't leave cost empty.</p>}
+					<input
+						className={styles["expense-form__input"]}
+						type="date"
+						min="01/01/2021"
+						max="12/31/2100"
+						placeholder="Name"
+						onChange={dateChangeHandler}
+						onBlur={dateBlurHandler}
+						value={dateValue}
+					/>
+					{dateHasError && <p>Please select a valid date.</p>}
 				</div>
-			))}
-		</form>
+				<div className={styles["expense-form__controls"]}>
+					<Button className={styles["expense-form--btn-alt"]} type="button" onClick={props.onClose}>
+						Cancel
+					</Button>
+					<Button className={styles["expense-form--btn"]} type="submit">
+						Add Expense
+					</Button>
+				</div>
+			</form>
+		</Modal>
 	);
 };
 
