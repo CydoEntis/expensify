@@ -43,7 +43,7 @@ const Dropdown = (props) => {
 					</p>
 				</div>
 				<div className={styles.dropdown__actions}>
-					<p>{open ? "Close" : "Open"}</p>
+					<p>{open ? <i class="bx bx-chevron-up"></i> : <i class="bx bx-chevron-down"></i>}</p>
 				</div>
 			</div>
 			{open && (
@@ -56,7 +56,7 @@ const Dropdown = (props) => {
 									handleOnClick(type);
 								}}>
 								<span>{type.value}</span>
-								<span>{isItemInSelection(type) && "Selected"}</span>
+								<span>{isItemInSelection(type) && <i class="bx bx-check"></i>}</span>
 							</button>
 						</li>
 					))}

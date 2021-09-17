@@ -20,7 +20,7 @@
 }
 
 .expense-item__type {
-	color: #8f8f8f;
+	color: var(--text-color-secondary);
 	font-size: 1rem;
 	padding: 0.1rem 0;
 }
@@ -32,19 +32,19 @@
 
 .expense-item__cost {
 	font-size: 1.1rem;
-	color: #9e301c;
+	color: var(--error-color);
 	text-align: right;
 }
 
 .expense-item__date {
-	color: #8f8f8f;
+	color: var(--text-color-secondary);
 	text-align: right;
 	font-style: italic;
 	font-size: 0.75rem;
 }
 
 .expense-item--delete-btn {
-	color: #9e301c;
+	color: var(--error-color);
 	border: none;
 	outline: none;
 	display: flex;

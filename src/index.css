@@ -9,3 +9,12 @@
 body {
 	font-family: "Barlow", sans-serif;
 }
+
+:root {
+	--primary-color: #bb26b6;
+	--secondary-color: #7733d9;
+	--tertiary-color: #331753;
+	--text-color: #fff;
+	--text-color-secondary: #8f8f8f;
+	--error-color: rgba(231, 77, 39, 0.904);
+}

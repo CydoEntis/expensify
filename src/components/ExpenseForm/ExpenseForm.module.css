@@ -2,7 +2,7 @@
 	font-size: 1.5rem;
 	text-align: center;
 	padding: 0.75rem;
-	color: rgb(37, 108, 52);
+	color: var(--text-color);
 }
 
 .expense-form {
@@ -14,23 +14,54 @@
 
 .expense-form__input {
 	width: 100%;
+	outline: none;
 	border: none;
-	border-bottom: 2px solid rgb(37, 108, 52);
+	background: transparent;
+	border-bottom: 2px solid var(--text-color);
 	margin: 0.5rem 0;
 	font-size: 1.15rem;
 }
 
+/* Change the color of the Placeholder for inputs */
+::placeholder {
+	/* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: var(--text-color);
+	opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: var(--text-color);
+}
+
+::-ms-input-placeholder {
+	/* Microsoft Edge */
+	color: var(--text-color);
+}
+
+input[type="date"] {
+	color: var(--text-color);
+}
+
+input::-webkit-calendar-picker-indicator {
+	color: var(--text-color);
+}
+
+::-webkit-calendar-picker-indicator {
+	filter: invert(1);
+}
+
 .expense-form--btn {
-	background: rgb(37, 108, 52);
-	color: rgb(6, 39, 10);
+	border: 1px solid var(--text-color);
+	color: var(--text-color);
 	padding: 0.5rem;
 	border-radius: 1rem;
 	margin-left: 0.25rem;
 }
 
 .expense-form--btn-alt {
-	background: rgb(6, 39, 10);
-	color: #fff;
+	border: 1px solid var(--text-color);
+	color: var(--text-color);
 	padding: 0.5rem;
 	border-radius: 1rem;
 	margin-right: 0.25rem;

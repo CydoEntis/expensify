@@ -24,13 +24,9 @@ function App() {
 				<div className={styles.wrapper}>
 					{showExpenseForm && <ExpenseForm onClose={toggleExpenseFormHandler} />}
 					<AddExpenseBtn onToggleForm={toggleExpenseFormHandler} />
-					<div className={styles["top-wrapper"]}>
-						<Budget />
-						<ExpensesFilter />
-					</div>
-					<div className={styles["bottom-wrapper"]}>
-						<Expenses />
-					</div>
+					<Budget />
+					{/* <ExpensesFilter /> */}
+					<Expenses />
 				</div>
 			</div>
 		</ExpensesContextProvider>

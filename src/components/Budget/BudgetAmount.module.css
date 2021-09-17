@@ -1,23 +1,22 @@
-.budget-welcome {
-	color: rgb(6, 39, 10);
-	padding: 0 1rem;
+.budget-text {
+	font-size: 1.1rem;
+	color: var(--tertiary-color);
 }
 
 .budget-amount {
-	color: #fff;
 	width: 100%;
-	padding: 0 1rem;
+	color: var(--text-color);
+	text-align: center;
 }
 
 .budget-amount__remaining--dollars {
 	font-size: 2.5rem;
-	padding: 0 0.3rem;
 }
 
 .budget-amount__total--dollars {
 	font-size: 1.5rem;
-	color: rgb(6, 39, 10);
 	padding: 0 0.3rem;
+	color: var(--tertiary-color);
 }
 
 .budget-amount--cents {
