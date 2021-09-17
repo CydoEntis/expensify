@@ -44,9 +44,7 @@
 }
 
 .expense-item--delete-btn {
-	/* color: #f5f5f5; */
-	/* background: rgb(255, 81, 81); */
-	color: #8f8f8f;
+	color: #9e301c;
 	border: none;
 	outline: none;
 	display: flex;
@@ -54,5 +52,7 @@
 	align-items: center;
 	width: 2rem;
 	font-size: 1.5rem;
+	margin-left: 0.25rem;
+	margin-top: 0.85rem;
 	padding: 0 0.5rem;
 }

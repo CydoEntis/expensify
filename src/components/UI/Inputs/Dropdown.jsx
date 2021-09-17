@@ -36,7 +36,9 @@ const Dropdown = (props) => {
 				<div className={styles.dropdown__title}>
 					<p>
 						<span>
-							{props.typeId === undefined ? "Expense Type" : props.types[props.typeId - 1].value}
+							{props.selectionId === undefined
+								? props.default
+								: props.selections[props.selectionId - 1].value}
 						</span>
 					</p>
 				</div>
@@ -46,7 +48,7 @@ const Dropdown = (props) => {
 			</div>
 			{open && (
 				<ul className={styles.dropdown__list}>
-					{props.types.map((type) => (
+					{props.selections.map((type) => (
 						<li className={styles.dropdown__item} key={type.id}>
 							<button
 								type="button"

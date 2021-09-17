@@ -8,7 +8,7 @@ import Button from "../UI/Buttons/Button";
 
 import styles from "./ExpenseForm.module.css";
 
-const TYPES = [
+const SELECTIONS = [
 	{ id: 1, value: "Bill" },
 	{ id: 2, value: "Food & Drink" },
 	{ id: 3, value: "Gas" },
@@ -25,13 +25,13 @@ const ExpenseForm = (props) => {
 	const expensesCtx = useContext(ExpensesContext);
 
 	const {
-		value: typeValue,
-		isValid: typeIsValid,
-		hasError: typeHasError,
+		value: selectionValue,
+		isValid: selectionIsValid,
+		hasError: selectionHasError,
 		selectionId,
-		dropdownHandler: typeChangeHandler,
-		inputBlurHandler: typeBlurHandler,
-		resetInputHandler: resetType,
+		dropdownHandler: selectionChangeHandler,
+		inputBlurHandler: selectionBlurHandler,
+		resetInputHandler: resetSelection,
 	} = useInput(isNotEmpty);
 
 	const {
@@ -62,7 +62,7 @@ const ExpenseForm = (props) => {
 	} = useInput(isNotEmpty);
 
 	const resetForm = () => {
-		resetType();
+		resetSelection();
 		resetName();
 		resetCost();
 		resetDate();
@@ -70,7 +70,7 @@ const ExpenseForm = (props) => {
 
 	let formIsValid = false;
 
-	if (nameIsValid && typeIsValid && costIsValid && dateIsValid) {
+	if (nameIsValid && selectionIsValid && costIsValid && dateIsValid) {
 		formIsValid = true;
 	}
 
@@ -81,7 +81,7 @@ const ExpenseForm = (props) => {
 
 		const newExpense = {
 			id: Math.floor(Math.random() * 1000),
-			type: typeValue,
+			type: selectionValue,
 			name: nameValue,
 			cost: costValue,
 			date: new Date(dateValue),
@@ -98,16 +98,16 @@ const ExpenseForm = (props) => {
 			<form className={styles["expense-form"]} onSubmit={submitHandler}>
 				<div>
 					<Dropdown
-						className={styles["expense-form__input"]}
+						default={"Expense Type"}
 						type="text"
 						placeholder="Type"
-						types={TYPES}
-						typeId={selectionId}
-						onChange={typeChangeHandler}
-						onBlur={typeBlurHandler}
-						value={typeValue}
+						selections={SELECTIONS}
+						selectionId={selectionId}
+						onChange={selectionChangeHandler}
+						onBlur={selectionBlurHandler}
+						value={selectionValue}
 					/>
-					{typeHasError && <p>Please select a type.</p>}
+					{selectionHasError && <p>Please select a type.</p>}
 					<input
 						className={styles["expense-form__input"]}
 						type="text"

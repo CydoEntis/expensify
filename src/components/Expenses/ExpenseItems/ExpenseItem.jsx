@@ -29,7 +29,7 @@ const ExpenseItem = (props) => {
 				onClick={() => {
 					expensesCtx.removeExpense(props.id);
 				}}>
-				<i className="bx bx-x"></i>
+				<i className="bx bxs-x-circle"></i>
 			</Button>
 		</div>
 	);

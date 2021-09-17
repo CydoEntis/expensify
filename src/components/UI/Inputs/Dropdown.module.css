@@ -1,4 +1,4 @@
-/* .dropdown {
+.dropdown {
 	width: 100%;
 	min-height: 1.5rem;
 	display: flex;
@@ -7,7 +7,7 @@
 	margin-top: 0.5rem;
 	padding: 0.5rem;
 	color: #fff;
-	background: #21cd9a;
+	background: rgb(37, 108, 52);
 }
 
 .dropdown__header {
@@ -32,14 +32,14 @@
 
 .dropdown__item {
 	list-style-type: none;
-	border-bottom: 2px solid #111620;
+	border-bottom: 2px solid rgb(6, 29, 8);
 }
 
 .dropdown__item button {
 	display: flex;
 	justify-content: space-between;
-	background: #21cd9a;
-	background-color: #1a2333;
+	background: rgb(37, 108, 52);
+	background-color: rgb(6, 39, 10);
 
 	color: #fff;
 	font-size: 16px;
@@ -47,4 +47,4 @@
 	border: none;
 	width: 100%;
 	text-align: left;
-} */
+}
