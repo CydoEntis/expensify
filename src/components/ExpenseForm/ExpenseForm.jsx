@@ -23,6 +23,7 @@ const ExpenseForm = () => {
 		value: typeValue,
 		isValid: typeIsValid,
 		hasError: typeHasError,
+		selectionId,
 		dropdownHandler: typeChangeHandler,
 		inputBlurHandler: typeBlurHandler,
 		resetInputHandler: resetType,
@@ -93,6 +94,7 @@ const ExpenseForm = () => {
 					type="text"
 					placeholder="Type"
 					types={TYPES}
+					typeId={selectionId}
 					onChange={typeChangeHandler}
 					onBlur={typeBlurHandler}
 					value={typeValue}

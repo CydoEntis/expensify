@@ -71,6 +71,7 @@ const useInput = (validateValue) => {
 		value: inputState.value,
 		isValid: valueIsValid,
 		hasError,
+		selectionId: inputState.id,
 		dropdownHandler,
 		inputValueChangeHandler,
 		inputBlurHandler,
