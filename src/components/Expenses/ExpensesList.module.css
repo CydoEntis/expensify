@@ -1,0 +1,14 @@
+.empty {
+	color: #8f8f8f;
+	width: 85%;
+	height: 50vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+}
+.empty i {
+	color: #8f8f8f;
+	font-size: 4rem;
+}

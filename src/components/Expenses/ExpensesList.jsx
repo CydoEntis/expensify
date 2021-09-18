@@ -3,12 +3,19 @@ import ExpensesContext from "../../contexts/ExpensesContext";
 
 import ExpenseItem from "./ExpenseItems/ExpenseItem";
 
+import styles from "./ExpensesList.module.css";
+
 const ExpensesList = (props) => {
 	// if (props.expenses.length === 0) return <Empty errorMessage={"Sorry you have no expenses"} />;
 	const expensesCtx = useContext(ExpensesContext);
 
 	if (expensesCtx.expenses.length === 0) {
-		return <p>No Expenses to track</p>;
+		return (
+			<div className={styles.empty}>
+				<i className="bx bxs-inbox"></i>
+				<h3>Expenses are empty</h3>
+			</div>
+		);
 	}
 
 	return (
