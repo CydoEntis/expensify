@@ -1,5 +1,4 @@
 import React from "react";
-import User from "../Profile/User";
 
 import styles from "./BudgetAmount.module.css";
 

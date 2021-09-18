@@ -1,7 +1,8 @@
 import { createContext } from "react";
 
 const UserContext = createContext({
-	expenses: [],
+	username: "",
+	budget: "",
 	editUsername: (value) => {},
 	editBudget: (value) => {},
 	login: () => {},

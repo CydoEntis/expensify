@@ -5,12 +5,12 @@ const UserProvider = ({ children }) => {
 	const [userBudget, setUserBudget] = useState("");
 	const [username, setUsername] = useState("");
 
-	const editUserBudget = (e) => {
-		setUserBudget(e.target.value);
+	const editBudget = (value) => {
+		setUserBudget(value);
 	};
 
-	const editUsername = (e) => {
-		setUsername(e.target.value);
+	const editUsername = (value) => {
+		setUsername(value);
 	};
 
 	const login = () => {};
@@ -18,9 +18,9 @@ const UserProvider = ({ children }) => {
 	const logout = () => {};
 
 	const userContext = {
-		userBudget,
-		username,
-		editUserBudget,
+		budget: userBudget,
+		username: username,
+		editBudget,
 		editUsername,
 		login,
 		logout,

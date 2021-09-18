@@ -7,6 +7,10 @@ const ExpensesList = (props) => {
 	// if (props.expenses.length === 0) return <Empty errorMessage={"Sorry you have no expenses"} />;
 	const expensesCtx = useContext(ExpensesContext);
 
+	if (expensesCtx.expenses.length === 0) {
+		return <p>No Expenses to track</p>;
+	}
+
 	return (
 		<ul>
 			{expensesCtx.expenses.map((expense) => (
