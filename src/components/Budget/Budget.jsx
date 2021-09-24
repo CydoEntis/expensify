@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 
 import BudgetAmount from "./BudgetAmount";
-
-import styles from "./Budget.module.css";
 import ExpensesContext from "../../contexts/ExpensesContext";
 import ProfileBanner from "../Profile/ProfileBanner";
 import ExpensesFilter from "../Filter/ExpensesFilter";
 import UserContext from "../../contexts/UserContext";
+
+import styles from "./Budget.module.css";
 
 const Budget = () => {
 	const expensesCtx = useContext(ExpensesContext);
@@ -27,15 +27,11 @@ const Budget = () => {
 	}
 
 	return (
-		<div className={styles.budget}>
+		<section className={styles.budget}>
 			<ProfileBanner />
-			<BudgetAmount
-				className={styles.budget__amount}
-				remainingBudget={remainingBudget}
-				totalBudget={totalBudget}
-			/>
+			<BudgetAmount remainingBudget={remainingBudget} totalBudget={totalBudget} />
 			<ExpensesFilter />
-		</div>
+		</section>
 	);
 };
 

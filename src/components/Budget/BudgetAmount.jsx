@@ -1,7 +1,5 @@
 import React from "react";
 
-import styles from "./BudgetAmount.module.css";
-
 const splitIntoDollarsAndCents = (amount) => {
 	const formattedAmount = amount.toFixed(2).toString().split(".");
 	return {
@@ -15,19 +13,17 @@ const BudgetAmount = ({ className, remainingBudget, totalBudget }) => {
 	const formattedTotalBudget = splitIntoDollarsAndCents(totalBudget);
 
 	return (
-		<div className={styles.budget}>
-			<h3 className={styles["budget-text"]}>Your current budget is</h3>
-			<div className={styles["budget-amount"]}>
+		<div>
+			<h3>Your current budget is</h3>
+			<div>
 				<h2>
-					<span className={styles["budget-amount__remaining--dollars"]}>
+					<span>
 						${formattedRemainingBudget.dollars}
-						<span className={styles["budget-amount--cents"]}>
-							.{formattedRemainingBudget.cents}
-						</span>
+						<span>.{formattedRemainingBudget.cents}</span>
 					</span>
-					<span className={styles["budget-amount__total--dollars"]}>
+					<span>
 						/${formattedTotalBudget.dollars}
-						<span className={styles["budget-amount--cents"]}>.{formattedTotalBudget.cents}</span>
+						<span>.{formattedTotalBudget.cents}</span>
 					</span>
 				</h2>
 			</div>

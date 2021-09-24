@@ -1,14 +1,19 @@
 .expense-item {
 	display: flex;
-	margin: 0.2rem 0;
+	padding: 1rem 0.5rem;
 }
 
 .expense-item--container {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	padding: 0 0.2rem;
+	padding: 0.5rem 0;
+	border-bottom: 1px solid #4e5664;
 }
+
+/* .expense-item--container:last-child {
+	border: none;
+} */
 
 .expense-item--flex {
 	display: flex;
@@ -20,9 +25,7 @@
 }
 
 .expense-item__type {
-	color: var(--text-color-secondary);
 	font-size: 1rem;
-	padding: 0.1rem 0;
 }
 
 .expense-item__name {
@@ -31,13 +34,13 @@
 }
 
 .expense-item__cost {
+	color: #e97d7d;
 	font-size: 1.1rem;
-	color: var(--error-color);
 	text-align: right;
 }
 
 .expense-item__date {
-	color: var(--text-color-secondary);
+	/* color: var(--text-color-secondary); */
 	text-align: right;
 	font-style: italic;
 	font-size: 0.75rem;

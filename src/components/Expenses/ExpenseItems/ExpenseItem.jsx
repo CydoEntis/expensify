@@ -24,13 +24,13 @@ const ExpenseItem = (props) => {
 				</div>
 				<ExpenseDate className={styles["expense-item__date"]} date={props.date} />
 			</div>
-			<Button
+			{/* <Button
 				className={styles["expense-item--delete-btn"]}
 				onClick={() => {
 					expensesCtx.removeExpense(props.id);
 				}}>
 				<i className="bx bxs-x-circle"></i>
-			</Button>
+			</Button> */}
 		</div>
 	);
 };
