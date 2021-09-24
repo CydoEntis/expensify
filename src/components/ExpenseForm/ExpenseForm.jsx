@@ -79,12 +79,18 @@ const ExpenseForm = (props) => {
 
 		if (!formIsValid) return;
 
+		const date = new Date(dateValue);
+		console.log(date);
+		const month = date.toLocaleString("en-US", { month: "long" });
+		const day = date.toLocaleString("en-US", { day: "2-digit" });
+		const year = date.getFullYear();
+
 		const newExpense = {
 			id: Math.floor(Math.random() * 1000),
 			type: selectionValue,
 			name: nameValue,
 			cost: costValue,
-			date: new Date(dateValue),
+			date: `${month} ${day}, ${year}`,
 		};
 
 		expensesCtx.addExpense(newExpense);

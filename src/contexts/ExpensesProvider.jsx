@@ -1,33 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ExpensesContext from "./ExpensesContext";
-
-// const TEMP_EXPENSES = [
-// 	{
-// 		id: "e1",
-// 		name: "Toilet Paper",
-// 		type: "Grocery",
-// 		cost: 94.12,
-// 		date: new Date(2020, 7, 14),
-// 	},
-// 	{ id: "e2", name: "New TV", type: "Recreation", cost: 799.49, date: new Date(2021, 2, 12) },
-// 	{
-// 		id: "e3",
-// 		name: "Car Insurance",
-// 		type: "Bill",
-// 		cost: 294.67,
-// 		date: new Date(2021, 2, 28),
-// 	},
-// 	{
-// 		id: "e4",
-// 		name: "New Desk (Wooden)",
-// 		type: "Decor",
-// 		cost: 450,
-// 		date: new Date(2021, 5, 12),
-// 	},
-// ];
 
 const ExpensesContextProvider = ({ children }) => {
 	const [expenses, setExpenses] = useState([]);
+
+	useEffect(() => {
+		const data = localStorage.getItem("expenses");
+		if (data) {
+			setExpenses(JSON.parse(data));
+		} else {
+			setExpenses([]);
+		}
+	}, []);
+
+	useEffect(() => {
+		localStorage.setItem("expenses", JSON.stringify(expenses));
+	});
 
 	const addExpenseHandler = (expense) => {
 		setExpenses((prevExpenses) => {
