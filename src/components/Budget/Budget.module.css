@@ -1,11 +1,11 @@
 .budget {
 	position: relative;
-	height: 35vh;
+	height: 45vh;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	background: var(--primary-color);
-	background: linear-gradient(var(--primary-color) 0%, var(--secondary-color) 100%);
-	border-radius: 0 0 1.25rem 1.25rem;
+	background: var(--bg-secondary);
+
 	padding: 0.5rem;
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
 }

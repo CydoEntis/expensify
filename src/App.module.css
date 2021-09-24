@@ -2,17 +2,10 @@
 	position: relative;
 	height: 100vh;
 	overflow: hidden;
+	background: var(--bg-primary);
 }
 
 .wrapper {
 	display: flex;
 	flex-direction: column;
-}
-
-.top-wrapper {
-	background: rgb(37, 108, 52);
-}
-
-.bottom-wrapper {
-	background: rgb(143, 180, 80);
 }
