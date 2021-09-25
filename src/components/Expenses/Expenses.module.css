@@ -1,6 +1,6 @@
 .expenses {
 	padding: 0.5rem;
-	padding-bottom: 2.5rem;
+	/* padding-bottom: 2.5rem; */
 	height: 65vh;
 	width: 100%;
 	overflow: scroll;

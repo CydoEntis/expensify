@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react';
 
-import BudgetAmount from "./BudgetAmount";
-import ExpensesContext from "../../contexts/ExpensesContext";
-import ProfileBanner from "../Profile/ProfileBanner";
-import ExpensesFilter from "../Filter/ExpensesFilter";
-import UserContext from "../../contexts/UserContext";
+import BudgetAmount from './BudgetAmount';
+import ExpensesContext from '../../contexts/ExpensesContext';
+import ExpensesFilter from '../Filter/ExpensesFilter';
+import UserContext from '../../contexts/UserContext';
 
-import styles from "./Budget.module.css";
+import styles from './Budget.module.css';
+import BudgetSpendings from './BudgetSpendings';
 
 const Budget = () => {
 	const expensesCtx = useContext(ExpensesContext);
@@ -26,11 +26,22 @@ const Budget = () => {
 		remainingBudget -= expense.cost;
 	}
 
+	let spendings = 0;
+	for (let expense of expensesCtx.expenses) {
+		spendings += parseFloat(expense.cost);
+	}
+
+	// spendings = parseInt(spendings);
+
 	return (
 		<section className={styles.budget}>
-			<ProfileBanner />
-			<BudgetAmount remainingBudget={remainingBudget} totalBudget={totalBudget} />
 			<ExpensesFilter />
+			<BudgetSpendings className={styles['budget--spendings']} spendings={spendings} />
+			<BudgetAmount
+				className={styles['budget--balance']}
+				remainingBudget={remainingBudget}
+				totalBudget={totalBudget}
+			/>
 		</section>
 	);
 };

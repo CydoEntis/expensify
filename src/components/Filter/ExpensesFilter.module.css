@@ -1,13 +1,1 @@
-.expenses-filter {
-	height: 12vh;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: 1.25rem 1.25rem 0 0;
-}
 
-.expenses-filter__controls {
-	width: 85%;
-	margin: 0 auto;
-}

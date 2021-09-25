@@ -1,0 +1,7 @@
+.navbar {
+	background: var(--bg-secondary);
+}
+
+.navbar--icon {
+	font-size: 3rem;
+}

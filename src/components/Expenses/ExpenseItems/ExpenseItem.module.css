@@ -1,6 +1,6 @@
 .expense-item {
 	display: flex;
-	padding: 1rem 0.5rem;
+	padding: 0.5rem;
 }
 
 .expense-item--container {

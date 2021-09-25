@@ -1,28 +1,41 @@
-import React from "react";
+import React from 'react';
 
-import Dropdown from "../UI/Inputs/Dropdown";
-import styles from "./ExpensesFilter.module.css";
+import Dropdown from '../UI/Inputs/Dropdown';
+import styles from './ExpensesFilter.module.css';
 
-import useInput from "../../hooks/use-input";
-
-let currYear = new Date().getFullYear();
+import useInput from '../../hooks/use-input';
 
 const SELECTIONS = [
-	{ id: 1, value: "January " + currYear },
-	{ id: 2, value: "Febuary " + currYear },
-	{ id: 3, value: "March " + currYear },
-	{ id: 4, value: "April " + currYear },
-	{ id: 5, value: "May " + currYear },
-	{ id: 6, value: "June " + currYear },
-	{ id: 7, value: "July " + currYear },
-	{ id: 8, value: "August " + currYear },
-	{ id: 9, value: "September " + currYear },
-	{ id: 10, value: "October " + currYear },
-	{ id: 11, value: "November " + currYear },
-	{ id: 12, value: "December " + currYear },
+	{ id: 1, value: 'January' },
+	{ id: 2, value: 'Febuary' },
+	{ id: 3, value: 'March' },
+	{ id: 4, value: 'April' },
+	{ id: 5, value: 'May' },
+	{ id: 6, value: 'June' },
+	{ id: 7, value: 'July' },
+	{ id: 8, value: 'August' },
+	{ id: 9, value: 'September' },
+	{ id: 10, value: 'October' },
+	{ id: 11, value: 'November' },
+	{ id: 12, value: 'December' },
 ];
 
-const isNotEmpty = (value) => value.trim() !== "";
+// const month = [
+// 	'January',
+// 	'Febuary',
+// 	'March',
+// 	'April',
+// 	'May',
+// 	'June',
+// 	'July',
+// 	'August',
+// 	'September',
+// 	'October',
+// 	'November',
+// 	'December',
+// ];
+
+const isNotEmpty = (value) => value.trim() !== '';
 
 const ExpensesFilter = () => {
 	const {
@@ -33,11 +46,11 @@ const ExpensesFilter = () => {
 	} = useInput(isNotEmpty);
 
 	return (
-		<div className={styles["expenses-filter"]}>
-			<div className={styles["expenses-filter__controls"]}>
+		<div className={styles['expenses-filter']}>
+			<div className={styles['expenses-filter__controls']}>
 				<Dropdown
-					default="Filter By Date"
-					className={styles["expenses-filter--dropdown"]}
+					default={'All'}
+					className={styles['expenses-filter--dropdown']}
 					type="text"
 					placeholder="Type"
 					selections={SELECTIONS}

@@ -1,8 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
 
 :root {
-	--font-primary: "Open Sans";
-	--font-secondary: "sans-serif";
+	--font-primary: 'Open Sans';
+	--font-secondary: 'sans-serif';
 	--bg-primary: #39414e;
 	--bg-primary-alt: #fff;
 	--bg-secondary: #59daa4;
@@ -11,6 +11,7 @@
 	--accent-tertiary: #59d4d9;
 	--text-primary: #fff;
 	--text-secondary: #858b97;
+	--text-error: #e97d7d;
 	/* --text-error:
 	--text-succes: */
 }
@@ -32,4 +33,8 @@ h2 {
 h3,
 p {
 	color: var(--text-secondary);
+}
+
+i {
+	font-size: 2.25rem;
 }

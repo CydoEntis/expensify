@@ -1,32 +1,27 @@
-import React from "react";
+import React from 'react';
+import { formatCurrency } from '../../helpers/helpers';
 
-const splitIntoDollarsAndCents = (amount) => {
-	const formattedAmount = amount.toFixed(2).toString().split(".");
-	return {
-		dollars: formattedAmount[0],
-		cents: formattedAmount[1],
-	};
-};
+import styles from './BudgetAmount.module.css';
 
 const BudgetAmount = ({ className, remainingBudget, totalBudget }) => {
-	const formattedRemainingBudget = splitIntoDollarsAndCents(remainingBudget);
-	const formattedTotalBudget = splitIntoDollarsAndCents(totalBudget);
+	const formattedRemainingBudget = formatCurrency(remainingBudget);
+	const formattedTotalBudget = formatCurrency(totalBudget);
 
 	return (
-		<div>
-			<h3>Your current budget is</h3>
-			<div>
-				<h2>
-					<span>
-						${formattedRemainingBudget.dollars}
-						<span>.{formattedRemainingBudget.cents}</span>
-					</span>
-					<span>
-						/${formattedTotalBudget.dollars}
-						<span>.{formattedTotalBudget.cents}</span>
-					</span>
-				</h2>
-			</div>
+		<div className={className}>
+			<h2>
+				<span className={styles.remaining}>
+					{' '}
+					${formattedRemainingBudget.dollars}
+					<span className={styles.cents}>.{formattedRemainingBudget.cents}</span> /
+				</span>
+				<span className={styles.total}>
+					{' '}
+					${formattedTotalBudget.dollars}
+					<span className={styles.cents}>.{formattedTotalBudget.cents}</span>
+				</span>
+			</h2>
+			{/* <h3>Balance</h3> */}
 		</div>
 	);
 };

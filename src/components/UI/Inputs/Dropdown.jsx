@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import styles from "./Dropdown.module.css";
+import styles from './Dropdown.module.css';
 
 const Dropdown = (props) => {
 	const [open, setOpen] = useState(false);
@@ -18,11 +18,6 @@ const Dropdown = (props) => {
 			props.onChange(item);
 			toggle();
 		}
-	};
-
-	const isItemInSelection = (item) => {
-		if (selection.find((current) => current.id === item.id)) return true;
-		return false;
 	};
 
 	return (
@@ -44,7 +39,11 @@ const Dropdown = (props) => {
 				</div>
 				<div className={styles.dropdown__actions}>
 					<p>
-						{open ? <i className="bx bx-chevron-up"></i> : <i className="bx bx-chevron-down"></i>}
+						{open ? (
+							<i className="bx bx-chevron-left"></i>
+						) : (
+							<i className="bx bx-chevron-right"></i>
+						)}
 					</p>
 				</div>
 			</div>
@@ -58,7 +57,6 @@ const Dropdown = (props) => {
 									handleOnClick(type);
 								}}>
 								<span>{type.value}</span>
-								<span>{isItemInSelection(type) && <i className="bx bx-check"></i>}</span>
 							</button>
 						</li>
 					))}
