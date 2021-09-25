@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import Modal from "../UI/Modals/Modal";
-import Button from "../UI/Buttons/Button";
-import UserContext from "../../contexts/UserContext";
-import useInput from "../../hooks/use-input";
-import styles from "../ExpenseForm/Form.module.css";
+import React, { useContext } from 'react';
+import Modal from '../UI/Modals/Modal';
+import Button from '../UI/Buttons/Button';
+import UserContext from '../../contexts/UserContext';
+import useInput from '../../hooks/use-input';
+import styles from '../ExpenseForm/Form.module.css';
 
 const validateUsername = (value) => {
 	if (/^[a-zA-Z]+$/.test(value)) return true;
@@ -61,9 +61,9 @@ const ProfileSettings = (props) => {
 
 	return (
 		<Modal onClose={props.onClose}>
-			<h1 className={styles["form__title"]}>Settings</h1>
-			<form className={styles["form"]} onSubmit={submitFormHandler}>
-				<input
+			<h1 className={styles['form__title']}>Edit Budget</h1>
+			<form className={styles['form']} onSubmit={submitFormHandler}>
+				{/* <input
 					className={styles["form__input"]}
 					type="text"
 					placeholder="Name"
@@ -73,21 +73,21 @@ const ProfileSettings = (props) => {
 				/>
 				{usernameHasError && (
 					<p className={styles["form-error"]}>Username can only contain letters.</p>
-				)}
+				)} */}
 				<input
-					className={styles["form__input"]}
+					className={styles['form__input']}
 					type="text"
-					placeholder="Cost"
+					placeholder="New Budget"
 					onChange={budgetChangeHandler}
 					onBlur={budgetBlurHandler}
 					value={budgetValue}
 				/>
-				{budgetHasError && <p className={styles["form-error"]}>Budget can only contain numbers.</p>}
+				{budgetHasError && <p className={styles['form-error']}>Budget can only contain numbers.</p>}
 				<div>
-					<Button type="button" onClick={props.onClose} className={styles["form--btn-alt"]}>
+					<Button type="button" onClick={props.onClose} className={styles['form--btn-alt']}>
 						Cancel
 					</Button>
-					<Button type="submit" className={styles["form--btn"]}>
+					<Button type="submit" className={styles['form--btn']}>
 						Save
 					</Button>
 				</div>

@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import ProfileSettings from '../Profile/ProfileSettings';
 
 import styles from './NavBar.module.css';
 import UserContext from '../../contexts/UserContext';
 import NavButton from './NavButton';
 
-const NavBar = () => {
+const NavBar = ({ showSettings, toggleSettingsHandler }) => {
 	const userCtx = useContext(UserContext);
 
 	let username;
@@ -15,14 +15,6 @@ const NavBar = () => {
 	} else {
 		username = userCtx.username;
 	}
-
-	const [showSettings, setShowSettings] = useState(false);
-
-	const toggleSettingsHandler = () => {
-		setShowSettings((prevState) => {
-			return !prevState;
-		});
-	};
 
 	return (
 		<div className={styles.navbar}>

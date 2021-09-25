@@ -1,7 +1,10 @@
 .navbar {
 	background: var(--bg-secondary);
+	text-align: right;
+	font-weight: 400;
 }
 
-.navbar--icon {
-	font-size: 3rem;
+.nav-icon i {
+	padding: 0.5rem;
+	font-size: 2rem;
 }

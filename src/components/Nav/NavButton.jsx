@@ -5,7 +5,7 @@ import Button from '../UI/Buttons/Button';
 const NavButton = ({ onToggleSettings, className }) => {
 	return (
 		<Button onClick={onToggleSettings} className={className}>
-			<i className="bx bx-menu-alt-left"></i>
+			<i className="bx bx-edit"></i>
 		</Button>
 	);
 };

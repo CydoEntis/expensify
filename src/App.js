@@ -15,6 +15,13 @@ const isNotEmpty = (value) => value.trim() !== '';
 
 function App() {
 	const [showExpenseForm, setShowExpenseForm] = useState(false);
+	const [showSettings, setShowSettings] = useState(false);
+
+	const toggleSettingsHandler = () => {
+		setShowSettings((prevState) => {
+			return !prevState;
+		});
+	};
 
 	const {
 		value: selectionValue,
@@ -33,7 +40,7 @@ function App() {
 		<ExpensesContextProvider>
 			<UserProvider>
 				<div className={styles.App}>
-					<NavBar />
+					<NavBar showSettings={showSettings} toggleSettingsHandler={toggleSettingsHandler} />
 					<Budget
 						value={selectionValue}
 						id={selectionId}
@@ -42,7 +49,7 @@ function App() {
 					/>
 					<Expenses filterMonth={selectionValue} />
 					{showExpenseForm && <ExpenseForm onClose={toggleExpenseFormHandler} />}
-					<AddExpenseBtn onToggleForm={toggleExpenseFormHandler} />
+					{!showSettings && <AddExpenseBtn onToggleForm={toggleExpenseFormHandler} />}
 				</div>
 			</UserProvider>
 		</ExpensesContextProvider>
