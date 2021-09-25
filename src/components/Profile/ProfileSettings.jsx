@@ -43,7 +43,7 @@ const ProfileSettings = (props) => {
 	};
 
 	let formIsValid = false;
-	if (usernameIsValid && budgetIsValid) {
+	if (budgetIsValid) {
 		formIsValid = true;
 	}
 

@@ -1,6 +1,6 @@
 .expense-item {
 	display: flex;
-	padding: 0.5rem;
+	border-bottom: 1px solid #4e5664;
 }
 
 .expense-item--container {
@@ -8,7 +8,6 @@
 	flex-direction: column;
 	width: 100%;
 	padding: 0.5rem 0;
-	border-bottom: 1px solid #4e5664;
 }
 
 /* .expense-item--container:last-child {
@@ -47,15 +46,19 @@
 }
 
 .expense-item--delete-btn {
-	color: var(--error-color);
+	color: var(--text-error);
 	border: none;
 	outline: none;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 2rem;
-	font-size: 1.5rem;
 	margin-left: 0.25rem;
 	margin-top: 0.85rem;
 	padding: 0 0.5rem;
+}
+
+.expense-item--delete-btn i {
+	color: var(--text-error);
+	font-size: 1.25rem;
 }

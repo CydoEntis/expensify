@@ -13,6 +13,10 @@
 	flex-direction: column;
 }
 
+.form:focus {
+	border: 1px solid var(--bg-secondary);
+}
+
 .form__input {
 	width: 100%;
 	outline: none;
@@ -22,6 +26,10 @@
 	padding: 0.5rem;
 	margin: 0.5rem 0;
 	font-size: 1.15rem;
+}
+
+.form__input:focus {
+	border: 1px solid var(--bg-secondary);
 }
 
 /* Change the color of the Placeholder for inputs */
@@ -87,6 +95,11 @@ input::-webkit-calendar-picker-indicator {
 .expense-dropdown {
 	border: 1px solid var(--bg-primary);
 	padding: 0.5rem;
+}
+
+.expense-dropdown:active,
+.expense-dropdown:focus {
+	border: 1px solid var(--bg-secondary);
 }
 
 .expense-dropdown span p {

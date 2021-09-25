@@ -19,6 +19,10 @@
 	cursor: pointer;
 }
 
+.dropdown:focus {
+	border: 1px solid var(--bg-secondary);
+}
+
 .dropdown__list {
 	width: 150px;
 	background: var(--bg-primary);
