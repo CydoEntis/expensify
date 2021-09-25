@@ -1,12 +1,12 @@
-import React from "react";
-import ExpensesList from "./ExpensesList";
+import React from 'react';
+import ExpensesList from './ExpensesList';
 
-import styles from "./Expenses.module.css";
+import styles from './Expenses.module.css';
 
-const Expenses = () => {
+const Expenses = ({ filterMonth }) => {
 	return (
 		<div className={styles.expenses}>
-			<ExpensesList />
+			<ExpensesList filterMonth={filterMonth} />
 		</div>
 	);
 };

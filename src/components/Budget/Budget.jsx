@@ -8,7 +8,7 @@ import UserContext from '../../contexts/UserContext';
 import styles from './Budget.module.css';
 import BudgetSpendings from './BudgetSpendings';
 
-const Budget = () => {
+const Budget = ({ value, id, onChange, onBlur }) => {
 	const expensesCtx = useContext(ExpensesContext);
 	const userCtx = useContext(UserContext);
 
@@ -31,11 +31,9 @@ const Budget = () => {
 		spendings += parseFloat(expense.cost);
 	}
 
-	// spendings = parseInt(spendings);
-
 	return (
 		<section className={styles.budget}>
-			<ExpensesFilter />
+			<ExpensesFilter value={value} id={id} onChange={onChange} onBlur={onBlur} />
 			<BudgetSpendings className={styles['budget--spendings']} spendings={spendings} />
 			<BudgetAmount
 				className={styles['budget--balance']}

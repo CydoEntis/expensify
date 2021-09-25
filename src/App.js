@@ -9,9 +9,19 @@ import AddExpenseBtn from './components/Expenses/AddExpenseBtn';
 import ExpenseForm from './components/ExpenseForm/ExpenseForm';
 import UserProvider from './contexts/UserProvider';
 import NavBar from './components/Nav/NavBar';
+import useInput from './hooks/use-input';
+
+const isNotEmpty = (value) => value.trim() !== '';
 
 function App() {
 	const [showExpenseForm, setShowExpenseForm] = useState(false);
+
+	const {
+		value: selectionValue,
+		selectionId,
+		dropdownHandler: selectionChangeHandler,
+		inputBlurHandler: selectionBlurHandler,
+	} = useInput(isNotEmpty);
 
 	const toggleExpenseFormHandler = () => {
 		setShowExpenseForm((prevState) => {
@@ -24,8 +34,13 @@ function App() {
 			<UserProvider>
 				<div className={styles.App}>
 					<NavBar />
-					<Budget />
-					<Expenses />
+					<Budget
+						value={selectionValue}
+						id={selectionId}
+						onChange={selectionChangeHandler}
+						onBlur={selectionBlurHandler}
+					/>
+					<Expenses filterMonth={selectionValue} />
 					{showExpenseForm && <ExpenseForm onClose={toggleExpenseFormHandler} />}
 					<AddExpenseBtn onToggleForm={toggleExpenseFormHandler} />
 				</div>

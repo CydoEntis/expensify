@@ -21,7 +21,7 @@ const Dropdown = (props) => {
 	};
 
 	return (
-		<div className={styles.dropdown}>
+		<div className={`${props.className} ${styles.dropdown}`}>
 			<div
 				className={styles.dropdown__header}
 				tabIndex={0}

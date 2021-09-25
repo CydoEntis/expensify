@@ -1,15 +1,45 @@
-import React, { useContext } from "react";
-import ExpensesContext from "../../contexts/ExpensesContext";
+import React, { useContext } from 'react';
+import ExpensesContext from '../../contexts/ExpensesContext';
 
-import ExpenseItem from "./ExpenseItems/ExpenseItem";
+import ExpenseItem from './ExpenseItems/ExpenseItem';
 
-import styles from "./ExpensesList.module.css";
+import styles from './ExpensesList.module.css';
+
+const month = [
+	'January',
+	'Febuary',
+	'March',
+	'April',
+	'May',
+	'June',
+	'July',
+	'August',
+	'September',
+	'October',
+	'November',
+	'December',
+];
 
 const ExpensesList = (props) => {
 	// if (props.expenses.length === 0) return <Empty errorMessage={"Sorry you have no expenses"} />;
 	const expensesCtx = useContext(ExpensesContext);
 
-	if (expensesCtx.expenses.length === 0) {
+	// console.log('Filter Month: ', props.filterMonth);
+
+	const filteredExpenses = expensesCtx.expenses.filter((expense) => {
+		const splitDate = expense.date.split(' ');
+		const expenseDate = splitDate[0];
+		let selectedMonth = props.filterMonth;
+		if (selectedMonth === '') {
+			selectedMonth = month[new Date().getMonth()];
+		}
+
+		if (expenseDate === selectedMonth) return expense;
+	});
+
+	const newExpenses = filteredExpenses;
+
+	if (newExpenses.length === 0) {
 		return (
 			<div className={styles.empty}>
 				<i className="bx bxs-inbox"></i>
@@ -20,7 +50,7 @@ const ExpensesList = (props) => {
 
 	return (
 		<ul>
-			{expensesCtx.expenses.map((expense) => (
+			{newExpenses.map((expense) => (
 				<ExpenseItem
 					key={expense.id}
 					id={expense.id}

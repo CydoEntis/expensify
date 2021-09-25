@@ -1,8 +1,8 @@
 .dropdown {
-	width: 250px;
+	width: 100%;
 	min-height: 1.5rem;
 	position: relative;
-	background: var(--bg-secondary);
+	background: transparent;
 }
 
 .dropdown p {
@@ -15,14 +15,14 @@
 	width: 100%;
 	display: flex;
 	align-items: center;
-	background: var(--bg-secondary);
+	background: transparent;
 	cursor: pointer;
 }
 
 .dropdown__list {
-	width: 100px;
+	width: 150px;
 	background: var(--bg-primary);
-	max-height: 175px;
+	max-height: 165px;
 	overflow-y: auto;
 	position: absolute;
 	top: -0.5rem;

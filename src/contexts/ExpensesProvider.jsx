@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import ExpensesContext from "./ExpensesContext";
+import React, { useState, useEffect } from 'react';
+import ExpensesContext from './ExpensesContext';
 
 const ExpensesContextProvider = ({ children }) => {
 	const [expenses, setExpenses] = useState([]);
 
 	useEffect(() => {
-		const data = localStorage.getItem("expenses");
+		const data = localStorage.getItem('expenses');
 		if (data) {
 			setExpenses(JSON.parse(data));
 		} else {
@@ -14,7 +14,7 @@ const ExpensesContextProvider = ({ children }) => {
 	}, []);
 
 	useEffect(() => {
-		localStorage.setItem("expenses", JSON.stringify(expenses));
+		localStorage.setItem('expenses', JSON.stringify(expenses));
 	});
 
 	const addExpenseHandler = (expense) => {

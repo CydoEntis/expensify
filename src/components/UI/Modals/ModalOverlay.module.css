@@ -1,14 +1,11 @@
 .modal {
 	position: fixed;
-	top: 20vh;
-	left: 5%;
-	width: 90%;
-	background-color: var(--text-color);
-	/* background: var(--primary-color);
-	background: linear-gradient(var(--primary-color) 0%, var(--secondary-color) 100%); */
+	width: 100%;
+	height: 90vh;
+	background-color: var(--text-primary);
 	padding: 1rem;
-	border-radius: 14px;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+	clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 	z-index: 100;
 	animation: slide-down 300ms ease-out forwards;
 }
@@ -23,7 +20,7 @@
 @keyframes slide-down {
 	from {
 		opacity: 0;
-		transform: translateY(-3rem);
+		transform: translateY(-50rem);
 	}
 	to {
 		opacity: 1;

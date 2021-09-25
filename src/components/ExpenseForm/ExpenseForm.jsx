@@ -1,25 +1,25 @@
-import React, { useContext } from "react";
-import useInput from "../../hooks/use-input";
+import React, { useContext } from 'react';
+import useInput from '../../hooks/use-input';
 
-import Modal from "../UI/Modals/Modal";
-import ExpensesContext from "../../contexts/ExpensesContext";
-import Dropdown from "../UI/Inputs/Dropdown";
-import Button from "../UI/Buttons/Button";
+import Modal from '../UI/Modals/Modal';
+import ExpensesContext from '../../contexts/ExpensesContext';
+import Dropdown from '../UI/Inputs/Dropdown';
+import Button from '../UI/Buttons/Button';
 
-import styles from "./Form.module.css";
+import styles from './Form.module.css';
 
 const SELECTIONS = [
-	{ id: 1, value: "Bill" },
-	{ id: 2, value: "Food & Drink" },
-	{ id: 3, value: "Gas" },
-	{ id: 4, value: "Decor" },
-	{ id: 5, value: "Recreation" },
-	{ id: 6, value: "Clothing" },
-	{ id: 7, value: "Emergency" },
-	{ id: 8, value: "Other" },
+	{ id: 1, value: 'Bill' },
+	{ id: 2, value: 'Food & Drink' },
+	{ id: 3, value: 'Gas' },
+	{ id: 4, value: 'Decor' },
+	{ id: 5, value: 'Recreation' },
+	{ id: 6, value: 'Clothing' },
+	{ id: 7, value: 'Emergency' },
+	{ id: 8, value: 'Other' },
 ];
 
-const isNotEmpty = (value) => value.trim() !== "";
+const isNotEmpty = (value) => value.trim() !== '';
 
 const ExpenseForm = (props) => {
 	const expensesCtx = useContext(ExpensesContext);
@@ -80,9 +80,8 @@ const ExpenseForm = (props) => {
 		if (!formIsValid) return;
 
 		const date = new Date(dateValue);
-		console.log(date);
-		const month = date.toLocaleString("en-US", { month: "long" });
-		const day = date.toLocaleString("en-US", { day: "2-digit" });
+		const month = date.toLocaleString('en-US', { month: 'long' });
+		const day = date.toLocaleString('en-US', { day: '2-digit' });
 		const year = date.getFullYear();
 
 		const newExpense = {
@@ -100,11 +99,12 @@ const ExpenseForm = (props) => {
 
 	return (
 		<Modal onClose={props.onClose}>
-			<h1 className={styles["form__title"]}>Add An Expense</h1>
-			<form className={styles["form"]} onSubmit={submitHandler}>
+			<h1 className={styles['form__title']}>Add An Expense</h1>
+			<form className={styles['form']} onSubmit={submitHandler}>
 				<div>
 					<Dropdown
-						default={"Expense Type"}
+						className={styles['expense-dropdown']}
+						default={'Type'}
 						type="text"
 						placeholder="Type"
 						selections={SELECTIONS}
@@ -113,18 +113,18 @@ const ExpenseForm = (props) => {
 						onBlur={selectionBlurHandler}
 						value={selectionValue}
 					/>
-					{selectionHasError && <p className={styles["form-error"]}>Please select a type.</p>}
+					{selectionHasError && <p className={styles['form-error']}>Please select a type.</p>}
 					<input
-						className={styles["form__input"]}
+						className={styles['form__input']}
 						type="text"
 						placeholder="Name"
 						onChange={nameChangeHandler}
 						onBlur={nameBlurHandler}
 						value={nameValue}
 					/>
-					{nameHasError && <p className={styles["form-error"]}>Please don't leave name empty.</p>}
+					{nameHasError && <p className={styles['form-error']}>Please don't leave name empty.</p>}
 					<input
-						className={styles["form__input"]}
+						className={styles['form__input']}
 						type="number"
 						min="0.01"
 						step="0.01"
@@ -133,9 +133,9 @@ const ExpenseForm = (props) => {
 						onBlur={costBlurHandler}
 						value={costValue}
 					/>
-					{costHasError && <p className={styles["form-error"]}>Please don't leave cost empty.</p>}
+					{costHasError && <p className={styles['form-error']}>Please don't leave cost empty.</p>}
 					<input
-						className={styles["form__input"]}
+						className={styles['form__input']}
 						type="date"
 						min="01/01/2021"
 						max="12/31/2100"
@@ -144,13 +144,13 @@ const ExpenseForm = (props) => {
 						onBlur={dateBlurHandler}
 						value={dateValue}
 					/>
-					{dateHasError && <p className={styles["form-error"]}>Please select a valid date.</p>}
+					{dateHasError && <p className={styles['form-error']}>Please select a valid date.</p>}
 				</div>
-				<div className={styles["form__controls"]}>
-					<Button className={styles["form--btn-alt"]} type="button" onClick={props.onClose}>
+				<div className={styles['form__controls']}>
+					<Button className={styles['form--btn-alt']} type="button" onClick={props.onClose}>
 						Cancel
 					</Button>
-					<Button className={styles["form--btn"]} type="submit">
+					<Button className={styles['form--btn']} type="submit">
 						Add Expense
 					</Button>
 				</div>
