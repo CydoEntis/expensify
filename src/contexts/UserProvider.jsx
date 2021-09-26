@@ -1,55 +1,57 @@
-import React, { useState, useEffect } from "react";
-import UserContext from "./UserContext";
+import React, { useState, useEffect } from 'react';
+import { loadFromLocalStorage } from '../helpers/helpers';
+import UserContext from './UserContext';
 
 const UserProvider = ({ children }) => {
-	const [userBudget, setUserBudget] = useState("");
-	const [username, setUsername] = useState("");
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [username, setUsername] = useState('User');
+	const [monthlyIncome, setMonthlyIncome] = useState(5000);
+	const [monthlyExpenses, setMonthlyExpenses] = useState([]);
 
-	useEffect(() => {
-		const data = localStorage.getItem("username");
-		if (data) {
-			setUsername(data);
-		} else {
-			setUsername("User");
-		}
-	}, []);
+	const loginHandler = () => {
+		const data = localStorage.getItem('expensifyProfile');
+		let parsedData;
 
-	useEffect(() => {
-		localStorage.setItem("username", username);
-	});
+		if (data) parsedData = JSON.parse(data);
 
-	useEffect(() => {
-		const data = localStorage.getItem("userBudget");
-		if (data) {
-			setUserBudget(data);
-		} else {
-			setUserBudget(0);
-		}
-	}, []);
-
-	useEffect(() => {
-		localStorage.setItem("userBudget", userBudget);
-	});
-
-	const editBudget = (value) => {
-		setUserBudget(value);
+		if (!parsedData.isLoggedIn) setIsLoggedIn(true);
+		else return;
 	};
 
-	const editUsername = (value) => {
-		setUsername(value);
+	const logoutHandler = () => {
+		const data = localStorage.getItem('expensifyProfile');
+		let parsedData;
+
+		if (data) parsedData = JSON.parse(data);
+
+		if (parsedData.isLoggedIn) setIsLoggedIn(false);
+		else return;
 	};
 
-	const login = () => {};
+	const usernameHandler = (username) => {
+		setUsername(username);
+	};
 
-	const logout = () => {};
+	const monthlyIncomeHandler = (monthlyIncom) => {
+		setMonthlyIncome(monthlyIncome);
+	};
+
+	const monthlyExpensesHandler = (monthlyExpenses) => {
+		setMonthlyExpenses((prevMonthlyExpenses) => {
+			return [monthlyExpenses, ...prevMonthlyExpenses];
+		});
+	};
 
 	const userContext = {
-		budget: userBudget,
-		username: username,
-		editBudget,
-		editUsername,
-		login,
-		logout,
+		isLoggedIn,
+		username,
+		monthlyIncome,
+		monthlyExpenses,
+		loginHandler,
+		logoutHandler,
+		usernameHandler,
+		monthlyIncomeHandler,
+		monthlyExpensesHandler,
 	};
 
 	return <UserContext.Provider value={userContext}>{children}</UserContext.Provider>;

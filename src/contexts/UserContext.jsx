@@ -1,12 +1,15 @@
-import { createContext } from "react";
+import { createContext } from 'react';
 
 const UserContext = createContext({
-	username: "",
-	budget: "",
-	editUsername: (value) => {},
-	editBudget: (value) => {},
-	login: () => {},
-	logout: () => {},
+	isLoggedIn: false,
+	username: 'User',
+	monthlyIncome: 5000,
+	monthlyExpenses: [],
+	loginHandler: () => {},
+	logoutHandler: () => {},
+	usernameHandler: (username) => {},
+	monthlyIncomeHandler: (monthlyIncome) => {},
+	monthlyExpensesHandler: (monthlyExpenses) => {},
 });
 
 export default UserContext;

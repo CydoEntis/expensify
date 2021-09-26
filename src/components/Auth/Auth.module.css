@@ -1,0 +1,30 @@
+/* .auth {
+	position: relative;
+	height: 100vh;
+	width: 100%;
+	background: var(--color-primary-alt);
+	clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+	animation: slide-down 300ms ease-out forwards;
+}
+
+@keyframes slide-down {
+	from {
+		opacity: 0;
+		transform: translateY(-50rem);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slide-up {
+	from {
+		opacity: 1;
+		transform: translateY(0rem);
+	}
+	to {
+		opacity: 0;
+		transform: translateY(-50rem);
+	}
+} */

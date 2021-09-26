@@ -1,46 +1,47 @@
 import React, { useState } from 'react';
 import styles from './App.module.css';
+import Auth from './components/Auth/Auth';
 
 import ExpensesContextProvider from './contexts/ExpensesProvider';
 
-import Budget from './components/Budget/Budget';
-import Expenses from './components/Expenses/Expenses.jsx';
-import AddExpenseBtn from './components/Expenses/AddExpenseBtn';
-import ExpenseForm from './components/ExpenseForm/ExpenseForm';
+// import Budget from './components/Budget/Budget';
+// import Expenses from './components/Expenses/Expenses.jsx';
+// import AddExpenseBtn from './components/Expenses/AddExpenseBtn';
+// import ExpenseForm from './components/Forms/ExpenseForm';
 import UserProvider from './contexts/UserProvider';
-import NavBar from './components/Nav/NavBar';
-import useInput from './hooks/use-input';
+// import NavBar from './components/Nav/NavBar';
+// import useInput from './hooks/use-input';
 
-const isNotEmpty = (value) => value.trim() !== '';
+// const isNotEmpty = (value) => value.trim() !== '';
 
 function App() {
-	const [showExpenseForm, setShowExpenseForm] = useState(false);
-	const [showSettings, setShowSettings] = useState(false);
+	// const [showExpenseForm, setShowExpenseForm] = useState(false);
+	// const [showSettings, setShowSettings] = useState(false);
 
-	const toggleSettingsHandler = () => {
-		setShowSettings((prevState) => {
-			return !prevState;
-		});
-	};
+	// const toggleSettingsHandler = () => {
+	// 	setShowSettings((prevState) => {
+	// 		return !prevState;
+	// 	});
+	// };
 
-	const {
-		value: selectionValue,
-		selectionId,
-		dropdownHandler: selectionChangeHandler,
-		inputBlurHandler: selectionBlurHandler,
-	} = useInput(isNotEmpty);
+	// const {
+	// 	value: selectionValue,
+	// 	selectionId,
+	// 	dropdownHandler: selectionChangeHandler,
+	// 	inputBlurHandler: selectionBlurHandler,
+	// } = useInput(isNotEmpty);
 
-	const toggleExpenseFormHandler = () => {
-		setShowExpenseForm((prevState) => {
-			return !prevState;
-		});
-	};
+	// const toggleExpenseFormHandler = () => {
+	// 	setShowExpenseForm((prevState) => {
+	// 		return !prevState;
+	// 	});
+	// };
 
 	return (
-		<ExpensesContextProvider>
-			<UserProvider>
-				<div className={styles.App}>
-					<NavBar showSettings={showSettings} toggleSettingsHandler={toggleSettingsHandler} />
+		<UserProvider>
+			<div className={styles.App}>
+				<Auth />
+				{/* <NavBar showSettings={showSettings} toggleSettingsHandler={toggleSettingsHandler} />
 					<Budget
 						value={selectionValue}
 						id={selectionId}
@@ -49,10 +50,9 @@ function App() {
 					/>
 					<Expenses filterMonth={selectionValue} />
 					{showExpenseForm && <ExpenseForm onClose={toggleExpenseFormHandler} />}
-					{!showSettings && <AddExpenseBtn onToggleForm={toggleExpenseFormHandler} />}
-				</div>
-			</UserProvider>
-		</ExpensesContextProvider>
+					{!showSettings && <AddExpenseBtn onToggleForm={toggleExpenseFormHandler} />} */}
+			</div>
+		</UserProvider>
 	);
 }
 
