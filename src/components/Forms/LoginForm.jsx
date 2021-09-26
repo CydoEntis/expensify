@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import UserContext from '../../contexts/UserContext';
 import useInput from '../../hooks/use-input';
 import ErrorMessage from '../Errors/ErrorMessage';
 import Button from '../UI/Buttons/Button';
@@ -7,6 +8,8 @@ import styles from './Form.module.css';
 
 const isNotEmpty = (value) => value.trim() !== '';
 const LoginForm = ({ toggleAuthOption }) => {
+	const userCtx = useContext(UserContext);
+
 	const {
 		value: usernameValue,
 		isValid: usernameIsValid,
@@ -35,14 +38,12 @@ const LoginForm = ({ toggleAuthOption }) => {
 		formIsValid = true;
 	}
 
-	console.log(usernameHasError);
-	console.log(usernameValue);
-
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
 
 		if (!formIsValid) return;
 
+		userCtx.loginHandler();
 		resetForm();
 	};
 
@@ -86,7 +87,6 @@ const LoginForm = ({ toggleAuthOption }) => {
 					onBlur={passwordBlurHandler}
 				/>
 				{passwordError}
-
 				<div className={styles['form-controls']}>
 					<Button type={'button'} className={styles['form-controls--btn-alt']}>
 						Cancel

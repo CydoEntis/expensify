@@ -19,3 +19,10 @@ export const saveToLocalStorage = (key, value) => {
 		localStorage.setItem(key, value);
 	}
 };
+
+export const getUserProfile = () => {
+	const data = localStorage.getItem('expensifyUser');
+
+	if (data) return JSON.parse(data);
+	else return;
+};

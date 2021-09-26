@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { loadFromLocalStorage } from '../helpers/helpers';
+import { getUserProfile, loadFromLocalStorage } from '../helpers/helpers';
 import UserContext from './UserContext';
 
 const UserProvider = ({ children }) => {
@@ -8,24 +8,38 @@ const UserProvider = ({ children }) => {
 	const [monthlyIncome, setMonthlyIncome] = useState(5000);
 	const [monthlyExpenses, setMonthlyExpenses] = useState([]);
 
+	useEffect(() => {
+		const data = localStorage.getItem('expensifyUser');
+
+		if (data) {
+			const parsedData = JSON.parse(data);
+			setIsLoggedIn(parsedData.isLoggedIn);
+			setUsername(parsedData.username);
+			setMonthlyIncome(parsedData.monthlyIncome);
+			setMonthlyExpenses(parsedData.monthlyExpenses);
+		} else {
+			return;
+		}
+	}, []);
+
 	const loginHandler = () => {
-		const data = localStorage.getItem('expensifyProfile');
-		let parsedData;
+		const data = getUserProfile();
 
-		if (data) parsedData = JSON.parse(data);
+		const updatedData = { ...data, isLoggedIn: true };
 
-		if (!parsedData.isLoggedIn) setIsLoggedIn(true);
-		else return;
+		localStorage.setItem('expensifyUser', JSON.stringify(updatedData));
+
+		setIsLoggedIn(true);
 	};
 
 	const logoutHandler = () => {
-		const data = localStorage.getItem('expensifyProfile');
-		let parsedData;
+		const data = getUserProfile();
 
-		if (data) parsedData = JSON.parse(data);
+		const updatedData = { ...data, isLoggedIn: false };
 
-		if (parsedData.isLoggedIn) setIsLoggedIn(false);
-		else return;
+		localStorage.setItem('expensifyUser', JSON.stringify(updatedData));
+
+		setIsLoggedIn(false);
 	};
 
 	const usernameHandler = (username) => {

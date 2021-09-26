@@ -3,7 +3,7 @@ import Modal from '../UI/Modals/Modal';
 import Button from '../UI/Buttons/Button';
 import UserContext from '../../contexts/UserContext';
 import useInput from '../../hooks/use-input';
-import styles from '../ExpenseForm/Form.module.css';
+import styles from '../Forms/Form.module.css';
 
 const validateUsername = (value) => {
 	if (/^[a-zA-Z]+$/.test(value)) return true;

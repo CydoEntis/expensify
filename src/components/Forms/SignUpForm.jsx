@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import UserContext from '../../contexts/UserContext';
 import useInput from '../../hooks/use-input';
 import ErrorMessage from '../Errors/ErrorMessage';
 import Button from '../UI/Buttons/Button';
@@ -7,6 +8,8 @@ import styles from './Form.module.css';
 
 const isNotEmpty = (value) => value.trim() !== '';
 const SignUpForm = ({ toggleAuthOption }) => {
+	const userCtx = useContext(UserContext);
+
 	const {
 		value: usernameValue,
 		isValid: usernameIsValid,
@@ -45,14 +48,23 @@ const SignUpForm = ({ toggleAuthOption }) => {
 		formIsValid = true;
 	}
 
-	console.log(usernameHasError);
-	console.log(usernameValue);
-
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
 
 		if (!formIsValid) return;
 
+		const user = {
+			isLoggedIn: true,
+			username: usernameValue,
+			password: passwordValue,
+			monthlyIncome: monthlyIncomeValue,
+			monthlyExpenses: [],
+		};
+
+		localStorage.setItem('expensifyUser', JSON.stringify(user));
+
+		toggleAuthOption();
+		userCtx.loginHandler();
 		resetForm();
 	};
 

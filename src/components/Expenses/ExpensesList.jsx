@@ -21,10 +21,7 @@ const month = [
 ];
 
 const ExpensesList = (props) => {
-	// if (props.expenses.length === 0) return <Empty errorMessage={"Sorry you have no expenses"} />;
 	const expensesCtx = useContext(ExpensesContext);
-
-	// console.log('Filter Month: ', props.filterMonth);
 
 	const filteredExpenses = expensesCtx.expenses.filter((expense) => {
 		const splitDate = expense.date.split(' ');

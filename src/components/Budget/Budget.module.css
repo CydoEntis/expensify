@@ -2,8 +2,9 @@
 	position: relative;
 	height: 35vh;
 	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
-	background: var(--bg-secondary);
+	background: var(--color-secondary);
 	padding: 1rem;
+	animation: slide-down 600ms ease-out forwards;
 }
 
 .budget--spendings {
@@ -28,4 +29,26 @@
 	text-align: left;
 	font-size: 1rem;
 	color: var(--bg-primary);
+}
+
+@keyframes slide-down {
+	from {
+		opacity: 0;
+		transform: translateY(-50rem);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slide-up {
+	from {
+		opacity: 1;
+		transform: translateY(0rem);
+	}
+	to {
+		opacity: 0;
+		transform: translateY(-50rem);
+	}
 }

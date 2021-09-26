@@ -8,9 +8,25 @@
 	bottom: 3%;
 	right: 5%;
 	font-size: 2rem;
-	background: var(--bg-secondary);
-	color: var(--bg-primary);
+	background: var(--color-secondary);
+	color: var(--color-primary);
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 	border-radius: 50%;
 	z-index: 80;
+	animation: slide-down 600ms ease-out forwards;
+}
+
+.btn--add i {
+	font-weight: bold;
+}
+
+@keyframes slide-down {
+	from {
+		opacity: 0;
+		transform: translateY(-50rem);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
