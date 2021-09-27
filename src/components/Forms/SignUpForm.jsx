@@ -4,7 +4,8 @@ import useInput from '../../hooks/use-input';
 import ErrorMessage from '../Errors/ErrorMessage';
 import Button from '../UI/Buttons/Button';
 
-import styles from './Form.module.css';
+import formStyles from './Form.module.css';
+import buttonStyles from '../UI/Buttons/Button.module.css';
 
 const isNotEmpty = (value) => value.trim() !== '';
 const SignUpForm = ({ toggleAuthOption }) => {
@@ -69,7 +70,7 @@ const SignUpForm = ({ toggleAuthOption }) => {
 	};
 
 	const toggleInputError = (inputType) => {
-		return inputType ? `${styles['form-error']}` : '';
+		return inputType ? `${formStyles['form-error']}` : '';
 	};
 
 	const usernameInputClasses = toggleInputError(usernameHasError);
@@ -89,9 +90,9 @@ const SignUpForm = ({ toggleAuthOption }) => {
 	);
 
 	return (
-		<div className={styles['form-container']}>
+		<div className={formStyles['form-container']}>
 			<form onSubmit={onSubmitHandler}>
-				<h2 className={styles['form-container--title']}>
+				<h2 className={formStyles['form-container--title']}>
 					<span>S</span>
 					ign Up
 				</h2>
@@ -122,16 +123,16 @@ const SignUpForm = ({ toggleAuthOption }) => {
 					onBlur={monthlyIncomeBlurHandler}
 				/>
 				{monthlyIncomeError}
-				<div className={styles['form-controls']}>
-					<Button type={'button'} className={styles['form-controls--btn-alt']}>
+				<div className={formStyles['form-controls']}>
+					<Button type={'button'} className={buttonStyles['btn-primary']}>
 						Cancel
 					</Button>
-					<Button type={'submit'} className={styles['form-controls--btn']}>
+					<Button type={'submit'} className={buttonStyles['btn-secondary']}>
 						Sign Up
 					</Button>
 				</div>
 			</form>
-			<p className={styles['form-container--redirect']} onClick={toggleAuthOption}>
+			<p className={formStyles['form-container--redirect']} onClick={toggleAuthOption}>
 				Already signed up? <span>Login here!</span>
 			</p>
 		</div>

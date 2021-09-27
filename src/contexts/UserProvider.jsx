@@ -9,19 +9,19 @@ const UserProvider = ({ children }) => {
 	const [monthlyIncome, setMonthlyIncome] = useState(5000);
 	const [monthlyExpenses, setMonthlyExpenses] = useState([]);
 
-	// useEffect(() => {
-	// 	const data = localStorage.getItem('expensifyUser');
+	useEffect(() => {
+		const data = localStorage.getItem('expensifyUser');
 
-	// 	if (data) {
-	// 		const parsedData = JSON.parse(data);
-	// 		setIsLoggedIn(parsedData.isLoggedIn);
-	// 		setUsername(parsedData.username);
-	// 		setMonthlyIncome(parsedData.monthlyIncome);
-	// 		setMonthlyExpenses(parsedData.monthlyExpenses);
-	// 	} else {
-	// 		return;
-	// 	}
-	// }, []);
+		if (data) {
+			const parsedData = JSON.parse(data);
+			setIsLoggedIn(parsedData.isLoggedIn);
+			setUsername(parsedData.username);
+			setMonthlyIncome(parsedData.monthlyIncome);
+			setMonthlyExpenses(parsedData.monthlyExpenses);
+		} else {
+			return;
+		}
+	}, []);
 
 	const loginHandler = () => {
 		const data = getUserProfile();

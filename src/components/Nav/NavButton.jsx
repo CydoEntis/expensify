@@ -2,10 +2,10 @@ import React from 'react';
 
 import Button from '../UI/Buttons/Button';
 
-const NavButton = ({ onToggleSettings, className }) => {
+const NavButton = ({ onClick, className }) => {
 	return (
-		<Button onClick={onToggleSettings} className={className}>
-			<i className="bx bx-edit"></i>
+		<Button onClick={onClick} className={className}>
+			<i className="bx bx-menu-alt-left"></i>
 		</Button>
 	);
 };

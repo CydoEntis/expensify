@@ -1,25 +1,14 @@
-import React, { useContext } from 'react';
-import ProfileSettings from '../Profile/ProfileSettings';
+import React from 'react';
 
-import styles from './NavBar.module.css';
-import UserContext from '../../contexts/UserContext';
+import styles from './Nav.module.css';
 import NavButton from './NavButton';
+import NavMenu from './NavMenu';
 
-const NavBar = ({ showSettings, toggleSettingsHandler }) => {
-	const userCtx = useContext(UserContext);
-
-	let username;
-
-	if (userCtx.username.length === 0) {
-		username = 'User';
-	} else {
-		username = userCtx.username;
-	}
-
+const NavBar = ({ showNavMenu, onClick }) => {
 	return (
 		<div className={styles.navbar}>
-			{showSettings && <ProfileSettings onClose={toggleSettingsHandler} />}
-			<NavButton className={styles['nav-icon']} onToggleSettings={toggleSettingsHandler} />
+			{showNavMenu && <NavMenu onClick={onClick} />}
+			<NavButton className={styles['nav-btn']} onClick={onClick} />
 		</div>
 	);
 };

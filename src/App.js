@@ -18,10 +18,10 @@ const isNotEmpty = (value) => value.trim() !== '';
 function App() {
 	const userCtx = useContext(UserContext);
 	const [showExpenseForm, setShowExpenseForm] = useState(false);
-	const [showSettings, setShowSettings] = useState(false);
+	const [showNavMenu, setShowNavMenu] = useState(false);
 
-	const toggleSettingsHandler = () => {
-		setShowSettings((prevState) => {
+	const toggleNavMenu = () => {
+		setShowNavMenu((prevState) => {
 			return !prevState;
 		});
 	};
@@ -43,6 +43,7 @@ function App() {
 		<UserProvider>
 			<div className={styles.App}>
 				{!userCtx.isLoggedIn && <Auth />}
+				{<NavBar showNavMenu={showNavMenu} onClick={toggleNavMenu} />}
 				<Budget
 					value={selectionValue}
 					id={selectionId}
@@ -50,9 +51,8 @@ function App() {
 					onBlur={selectionBlurHandler}
 				/>
 				<Expenses filterMonth={selectionValue} />
-				{<NavBar showSettings={showSettings} toggleSettingsHandler={toggleSettingsHandler} />}
 				{showExpenseForm && <ExpenseForm onClose={toggleExpenseFormHandler} />}
-				{!showSettings && <AddExpenseBtn onToggleForm={toggleExpenseFormHandler} />}
+				{!showNavMenu && <AddExpenseBtn onToggleForm={toggleExpenseFormHandler} />}
 			</div>
 		</UserProvider>
 	);

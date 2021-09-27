@@ -1,8 +1,9 @@
 .form-container {
-	position: relative;
+	z-index: 1000;
+	position: absolute;
+	top: 0;
 	height: 100vh;
 	width: 100%;
-	/* padding: 10rem 0.75rem; */
 	background: var(--color-primary-alt);
 	color: var(--color-primary);
 	clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
@@ -45,24 +46,10 @@
 	margin-top: 1.5rem;
 }
 
-.form-controls--btn {
-	margin: 0 1rem;
-	background: var(--color-primary);
-	color: var(--color-secondary);
-}
-
-.form-controls--btn-alt {
-	color: var(--color-primary);
-	border: 1px solid var(--color-primary);
-	background: var(--color-primary-alt);
-}
-
 .form-container--redirect {
 	margin-top: 2rem;
 	font-size: 1.07rem;
 	text-align: center;
-
-	/* padding: 1rem 0; */
 }
 
 .form-container--redirect span {
