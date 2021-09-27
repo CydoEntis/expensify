@@ -1,11 +1,18 @@
 .App {
 	position: relative;
 	height: 100vh;
+	background: var(--color-primary);
 	overflow: hidden;
-	background: var(--bg-primary);
 }
 
 .wrapper {
 	display: flex;
 	flex-direction: column;
+}
+
+.filters {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	padding: 0.5rem;
 }

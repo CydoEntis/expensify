@@ -4,6 +4,7 @@ import Auth from './components/Auth/Auth';
 
 // import ExpensesContextProvider from './contexts/ExpensesProvider';
 
+import ExpensesFilter from './components/Filter/ExpensesFilter';
 import Budget from './components/Budget/Budget';
 import UserContext from './contexts/UserContext';
 import Expenses from './components/Expenses/Expenses.jsx';
@@ -50,6 +51,20 @@ function App() {
 					onChange={selectionChangeHandler}
 					onBlur={selectionBlurHandler}
 				/>
+				<div className={styles.filters}>
+					<ExpensesFilter
+						value={selectionValue}
+						id={selectionId}
+						onChange={selectionChangeHandler}
+						onBlur={selectionBlurHandler}
+					/>
+					<ExpensesFilter
+						value={selectionValue}
+						id={selectionId}
+						onChange={selectionChangeHandler}
+						onBlur={selectionBlurHandler}
+					/>
+				</div>
 				<Expenses filterMonth={selectionValue} />
 				{showExpenseForm && <ExpenseForm onClose={toggleExpenseFormHandler} />}
 				{!showNavMenu && <AddExpenseBtn onToggleForm={toggleExpenseFormHandler} />}

@@ -1,8 +1,10 @@
 .dropdown {
-	width: 100%;
-	min-height: 1.5rem;
 	position: relative;
+	width: 100%;
+	height: 5vh;
+	min-height: 1.5rem;
 	background: transparent;
+	color: var(--color-primary-alt);
 }
 
 .dropdown p {
@@ -14,7 +16,6 @@
 .dropdown__header {
 	width: 100%;
 	display: flex;
-	align-items: center;
 	background: transparent;
 	cursor: pointer;
 }
@@ -24,17 +25,13 @@
 }
 
 .dropdown__list {
-	width: 150px;
-	background: var(--bg-primary);
-	max-height: 165px;
-	overflow-y: auto;
 	position: absolute;
-	top: -0.5rem;
-	left: 40%;
-	padding: 0;
-	margin: 0;
-	margin-top: 0.5rem;
-	z-index: 80;
+	height: 45vh;
+	width: 100%;
+	background: var(--color-primary-alt);
+	border-radius: 0.25rem;
+	overflow-y: auto;
+	overflow-x: hidden;
 	animation: slide-down 300ms ease-out forwards;
 }
 
@@ -47,23 +44,21 @@
 }
 
 .dropdown__item button {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 0.5rem;
+	padding: 0.3rem;
 	border: none;
-	background-color: var(--tertiary-color);
-	color: var(--text-primary);
-	font-size: 16px;
+	color: var(--color-primary);
+	background-color: transparent;
+	margin: 0.15rem 0;
+	font-size: 1.25rem;
 }
 
 @keyframes slide-down {
 	from {
 		opacity: 0;
-		transform: translateX(0);
+		transform: translateY(0);
 	}
 	to {
 		opacity: 1;
-		transform: translateX(0.5rem);
+		transform: translateY(0.5rem);
 	}
 }

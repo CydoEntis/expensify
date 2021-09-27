@@ -1,10 +1,10 @@
 .budget {
-	position: relative;
 	height: 35vh;
 	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
 	background: var(--color-secondary);
 	padding: 1rem;
-	animation: slide-down 600ms ease-out forwards;
+	padding-top: 3.25rem;
+	/* animation: slide-down 600ms ease-out forwards; */
 }
 
 .budget--spendings {

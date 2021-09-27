@@ -1,45 +1,38 @@
 import React, { useContext } from 'react';
 
 import BudgetAmount from './BudgetAmount';
-import ExpensesContext from '../../contexts/ExpensesContext';
 import ExpensesFilter from '../Filter/ExpensesFilter';
 import UserContext from '../../contexts/UserContext';
+import BudgetSpendings from './BudgetSpendings';
 
 import styles from './Budget.module.css';
-// import BudgetSpendings from './BudgetSpendings';
 
 const Budget = ({ value, id, onChange, onBlur }) => {
-	// const expensesCtx = useContext(ExpensesContext);
-	// const userCtx = useContext(UserContext);
+	const userCtx = useContext(UserContext);
 
-	// let totalBudget;
+	let totalBudget = parseInt(userCtx.monthlyIncome);
 
-	// if (userCtx.budget.length === 0) {
-	// 	totalBudget = 0;
-	// } else {
-	// 	totalBudget = parseInt(userCtx.budget);
-	// }
+	console.log(totalBudget);
 
-	// let remainingBudget = totalBudget;
+	let remainingBudget = totalBudget;
 
-	// for (let expense of expensesCtx.expenses) {
-	// 	remainingBudget -= expense.cost;
-	// }
+	for (let expense of userCtx.monthlyExpenses) {
+		remainingBudget -= expense.cost;
+	}
 
-	// let spendings = 0;
-	// for (let expense of expensesCtx.expenses) {
-	// 	spendings += parseFloat(expense.cost);
-	// }
+	let spendings = 0;
+	for (let expense of userCtx.monthlyExpenses) {
+		spendings += parseFloat(expense.cost);
+	}
 
 	return (
 		<section className={styles.budget}>
-			{/* <ExpensesFilter value={value} id={id} onChange={onChange} onBlur={onBlur} /> */}
-			{/* <BudgetSpendings className={styles['budget--spendings']} spendings={spendings} /> */}
-			{/* <BudgetAmount
+			<BudgetSpendings className={styles['budget--spendings']} spendings={spendings} />
+			<BudgetAmount
 				className={styles['budget--balance']}
 				remainingBudget={remainingBudget}
 				totalBudget={totalBudget}
-			/> */}
+			/>
 		</section>
 	);
 };
