@@ -5,22 +5,23 @@ import UserContext from './UserContext';
 const UserProvider = ({ children }) => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [username, setUsername] = useState('User');
+	const [password, setPassword] = useState('User');
 	const [monthlyIncome, setMonthlyIncome] = useState(5000);
 	const [monthlyExpenses, setMonthlyExpenses] = useState([]);
 
-	useEffect(() => {
-		const data = localStorage.getItem('expensifyUser');
+	// useEffect(() => {
+	// 	const data = localStorage.getItem('expensifyUser');
 
-		if (data) {
-			const parsedData = JSON.parse(data);
-			setIsLoggedIn(parsedData.isLoggedIn);
-			setUsername(parsedData.username);
-			setMonthlyIncome(parsedData.monthlyIncome);
-			setMonthlyExpenses(parsedData.monthlyExpenses);
-		} else {
-			return;
-		}
-	}, []);
+	// 	if (data) {
+	// 		const parsedData = JSON.parse(data);
+	// 		setIsLoggedIn(parsedData.isLoggedIn);
+	// 		setUsername(parsedData.username);
+	// 		setMonthlyIncome(parsedData.monthlyIncome);
+	// 		setMonthlyExpenses(parsedData.monthlyExpenses);
+	// 	} else {
+	// 		return;
+	// 	}
+	// }, []);
 
 	const loginHandler = () => {
 		const data = getUserProfile();
@@ -46,6 +47,10 @@ const UserProvider = ({ children }) => {
 		setUsername(username);
 	};
 
+	const passwordHandler = (password) => {
+		setPassword(password);
+	};
+
 	const monthlyIncomeHandler = (monthlyIncom) => {
 		setMonthlyIncome(monthlyIncome);
 	};
@@ -59,11 +64,13 @@ const UserProvider = ({ children }) => {
 	const userContext = {
 		isLoggedIn,
 		username,
+		password,
 		monthlyIncome,
 		monthlyExpenses,
 		loginHandler,
 		logoutHandler,
 		usernameHandler,
+		passwordHandler,
 		monthlyIncomeHandler,
 		monthlyExpensesHandler,
 	};

@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import UserContext from '../../contexts/UserContext';
+import { getUserProfile } from '../../helpers/helpers';
 import useInput from '../../hooks/use-input';
 import ErrorMessage from '../Errors/ErrorMessage';
 import Button from '../UI/Buttons/Button';
@@ -9,6 +10,7 @@ import styles from './Form.module.css';
 const isNotEmpty = (value) => value.trim() !== '';
 const LoginForm = ({ toggleAuthOption }) => {
 	const userCtx = useContext(UserContext);
+	const [isValidCredentials, setIsValidCredentials] = useState(true);
 
 	const {
 		value: usernameValue,
@@ -34,12 +36,20 @@ const LoginForm = ({ toggleAuthOption }) => {
 	};
 
 	let formIsValid;
+	let invalidCredentials;
 	if (usernameIsValid && passwordIsValid) {
 		formIsValid = true;
 	}
 
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
+
+		const data = getUserProfile();
+
+		if (data.username !== usernameValue || data.password !== passwordValue) {
+			setIsValidCredentials(false);
+			return;
+		}
 
 		if (!formIsValid) return;
 
@@ -60,6 +70,10 @@ const LoginForm = ({ toggleAuthOption }) => {
 
 	const passwordError = passwordHasError && (
 		<ErrorMessage>Password must be atleast 5 characters long.</ErrorMessage>
+	);
+
+	const invalidLogin = !isValidCredentials && (
+		<ErrorMessage>Username or password is incorrect.</ErrorMessage>
 	);
 
 	return (
@@ -87,6 +101,7 @@ const LoginForm = ({ toggleAuthOption }) => {
 					onBlur={passwordBlurHandler}
 				/>
 				{passwordError}
+				{invalidLogin}
 				<div className={styles['form-controls']}>
 					<Button type={'button'} className={styles['form-controls--btn-alt']}>
 						Cancel
