@@ -1,13 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import useInput from '../../hooks/use-input';
+import { getUserProfile } from '../../helpers/helpers';
 
-import ExpensesContext from '../../contexts/ExpensesContext';
 import Dropdown from '../UI/Inputs/Dropdown';
 import Button from '../UI/Buttons/Button';
 import ErrorMessage from '../Errors/ErrorMessage';
 
 import formStyles from './Form.module.css';
 import buttonStyles from '../UI/Buttons/Button.module.css';
+import UserContext from '../../contexts/UserContext';
 
 const SELECTIONS = [
 	{ id: 1, value: 'Bill' },
@@ -23,7 +24,8 @@ const SELECTIONS = [
 const isNotEmpty = (value) => value.trim() !== '';
 
 const ExpenseForm = (props) => {
-	const expensesCtx = useContext(ExpensesContext);
+	const userCtx = useContext(UserContext);
+	const [formIsInvalid, setFormIsInvalid] = useState(false);
 
 	const {
 		value: selectionValue,
@@ -69,7 +71,7 @@ const ExpenseForm = (props) => {
 		resetDate();
 	};
 
-	let formIsValid = false;
+	let formIsValid;
 
 	if (nameIsValid && selectionIsValid && costIsValid && dateIsValid) {
 		formIsValid = true;
@@ -78,7 +80,10 @@ const ExpenseForm = (props) => {
 	const submitHandler = (e) => {
 		e.preventDefault();
 
-		if (!formIsValid) return;
+		if (!formIsValid) {
+			setFormIsInvalid(true);
+			return;
+		}
 
 		const date = new Date(dateValue);
 		const month = date.toLocaleString('en-US', { month: 'long' });
@@ -90,10 +95,19 @@ const ExpenseForm = (props) => {
 			type: selectionValue,
 			name: nameValue,
 			cost: costValue,
-			date: `${month} ${day}, ${year}`,
+			date: `${month} ${day} ${year}`,
 		};
 
-		expensesCtx.addExpense(newExpense);
+		userCtx.addExpenseHandler(newExpense);
+
+		const data = getUserProfile();
+
+		const updatedMonthlyExpenses = data.monthlyExpenses.concat(newExpense);
+
+		const updatedData = { ...data, monthlyExpenses: updatedMonthlyExpenses };
+
+		localStorage.setItem('expensifyUser', JSON.stringify(updatedData));
+
 		props.onClose();
 		resetForm();
 	};
@@ -104,6 +118,7 @@ const ExpenseForm = (props) => {
 	const nameError = nameHasError && <ErrorMessage>Name must not be empty.</ErrorMessage>;
 	const costError = costHasError && <ErrorMessage>Cost must be greater then $0.01.</ErrorMessage>;
 	const dateError = dateHasError && <ErrorMessage>Please select a valid date.</ErrorMessage>;
+	const invalidForm = formIsInvalid && <ErrorMessage>Please fill out entire form.</ErrorMessage>;
 
 	return (
 		<div className={formStyles['form-container']}>
@@ -111,7 +126,7 @@ const ExpenseForm = (props) => {
 				<h1 className={formStyles['form-container--title']}>Add An Expense</h1>
 				<div>
 					<Dropdown
-						className={formStyles['expense-dropdown']}
+						className={formStyles['form-dropdown']}
 						default={'Type'}
 						type="text"
 						placeholder="Type"
@@ -150,6 +165,7 @@ const ExpenseForm = (props) => {
 						value={dateValue}
 					/>
 					{dateError}
+					{invalidForm}
 				</div>
 				<div className={formStyles['form-controls']}>
 					<Button className={buttonStyles['btn-secondary']} type="button" onClick={props.onClose}>

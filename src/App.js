@@ -2,8 +2,6 @@ import React, { useState, useContext } from 'react';
 import styles from './App.module.css';
 import Auth from './components/Auth/Auth';
 
-// import ExpensesContextProvider from './contexts/ExpensesProvider';
-
 import ExpensesFilter from './components/Filter/ExpensesFilter';
 import Budget from './components/Budget/Budget';
 import UserContext from './contexts/UserContext';
@@ -13,6 +11,51 @@ import ExpenseForm from './components/Forms/ExpenseForm';
 import UserProvider from './contexts/UserProvider';
 import NavBar from './components/Nav/NavBar';
 import useInput from './hooks/use-input';
+
+const MONTH_SELECTION = [
+	{ id: 1, value: 'January' },
+	{ id: 2, value: 'Febuary' },
+	{ id: 3, value: 'March' },
+	{ id: 4, value: 'April' },
+	{ id: 5, value: 'May' },
+	{ id: 6, value: 'June' },
+	{ id: 7, value: 'July' },
+	{ id: 8, value: 'August' },
+	{ id: 9, value: 'September' },
+	{ id: 10, value: 'October' },
+	{ id: 11, value: 'November' },
+	{ id: 12, value: 'December' },
+];
+
+// const YEAR_SELECTION = [
+// 	{ id: 1, value: '2021' },
+// 	{ id: 2, value: '2022' },
+// 	{ id: 3, value: '2023' },
+// 	{ id: 4, value: '2024' },
+// 	{ id: 5, value: '2025' },
+// 	{ id: 6, value: '2026' },
+// 	{ id: 7, value: '2027' },
+// 	{ id: 8, value: '2027' },
+// 	{ id: 9, value: '2028' },
+// 	{ id: 10, value: '2029' },
+// 	{ id: 11, value: '2030' },
+// 	{ id: 12, value: '2031' },
+// ];
+
+const month = [
+	'January',
+	'Febuary',
+	'March',
+	'April',
+	'May',
+	'June',
+	'July',
+	'August',
+	'September',
+	'October',
+	'November',
+	'December',
+];
 
 const isNotEmpty = (value) => value.trim() !== '';
 
@@ -28,11 +71,18 @@ function App() {
 	};
 
 	const {
-		value: selectionValue,
-		selectionId,
-		dropdownHandler: selectionChangeHandler,
-		inputBlurHandler: selectionBlurHandler,
+		value: monthValue,
+		selectionId: monthId,
+		dropdownHandler: monthChangeHandler,
+		inputBlurHandler: monthBlurHandler,
 	} = useInput(isNotEmpty);
+
+	// const {
+	// 	value: yearValue,
+	// 	selectionId: yearId,
+	// 	dropdownHandler: yearChangeHandler,
+	// 	inputBlurHandler: yearBlurHandler,
+	// } = useInput(isNotEmpty);
 
 	const toggleExpenseFormHandler = () => {
 		setShowExpenseForm((prevState) => {
@@ -40,34 +90,40 @@ function App() {
 		});
 	};
 
+	console.log('Is Logged In: ', userCtx.isLoggedIn);
+
 	return (
 		<UserProvider>
 			<div className={styles.App}>
 				{!userCtx.isLoggedIn && <Auth />}
-				{<NavBar showNavMenu={showNavMenu} onClick={toggleNavMenu} />}
-				<Budget
-					value={selectionValue}
-					id={selectionId}
-					onChange={selectionChangeHandler}
-					onBlur={selectionBlurHandler}
-				/>
-				<div className={styles.filters}>
-					<ExpensesFilter
-						value={selectionValue}
-						id={selectionId}
-						onChange={selectionChangeHandler}
-						onBlur={selectionBlurHandler}
+				<div>
+					{<NavBar showNavMenu={showNavMenu} onClick={toggleNavMenu} />}
+					<Budget />
+					<div className={styles.filters}>
+						<ExpensesFilter
+							defaultVal={month[new Date().getMonth()]}
+							selections={MONTH_SELECTION}
+							value={monthValue}
+							id={monthId}
+							onChange={monthChangeHandler}
+							onBlur={monthBlurHandler}
+						/>
+						{/* <ExpensesFilter
+							defaultVal={new Date().getFullYear()}
+							selections={YEAR_SELECTION}
+							value={yearValue}
+							id={yearId}
+							onChange={yearChangeHandler}
+							onBlur={yearBlurHandler}
+						/> */}
+					</div>
+					<Expenses
+						filterMonth={monthValue || month[new Date().getMonth().toString()]}
+						// filterYear={yearValue || new Date().getFullYear().toString()}
 					/>
-					<ExpensesFilter
-						value={selectionValue}
-						id={selectionId}
-						onChange={selectionChangeHandler}
-						onBlur={selectionBlurHandler}
-					/>
+					{showExpenseForm && <ExpenseForm onClose={toggleExpenseFormHandler} />}
+					{!showNavMenu && <AddExpenseBtn onToggleForm={toggleExpenseFormHandler} />}
 				</div>
-				<Expenses filterMonth={selectionValue} />
-				{showExpenseForm && <ExpenseForm onClose={toggleExpenseFormHandler} />}
-				{!showNavMenu && <AddExpenseBtn onToggleForm={toggleExpenseFormHandler} />}
 			</div>
 		</UserProvider>
 	);

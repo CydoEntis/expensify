@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import UserContext from '../../contexts/UserContext';
 import LoginForm from '../Forms/LoginForm';
 import SignUpForm from '../Forms/SignUpForm';
-import Button from '../UI/Buttons/Button';
 
 import styles from './Auth.module.css';
 

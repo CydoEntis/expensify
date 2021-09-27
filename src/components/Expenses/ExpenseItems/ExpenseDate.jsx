@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const ExpenseDate = ({ className, date }) => {
 	return <p className={className}>{date}</p>;

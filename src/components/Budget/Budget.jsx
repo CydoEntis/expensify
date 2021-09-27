@@ -1,18 +1,15 @@
 import React, { useContext } from 'react';
 
 import BudgetAmount from './BudgetAmount';
-import ExpensesFilter from '../Filter/ExpensesFilter';
 import UserContext from '../../contexts/UserContext';
 import BudgetSpendings from './BudgetSpendings';
 
 import styles from './Budget.module.css';
 
-const Budget = ({ value, id, onChange, onBlur }) => {
+const Budget = () => {
 	const userCtx = useContext(UserContext);
 
-	let totalBudget = parseInt(userCtx.monthlyIncome);
-
-	console.log(totalBudget);
+	let totalBudget = parseInt(userCtx.income);
 
 	let remainingBudget = totalBudget;
 

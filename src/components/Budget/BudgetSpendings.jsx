@@ -7,7 +7,7 @@ const BudgetSpendings = ({ className, spendings }) => {
 	return (
 		<div>
 			<h2 className={className}>
-				This month you've spent
+				You've spent
 				<span>
 					{' '}
 					${formattedSpendings.dollars}

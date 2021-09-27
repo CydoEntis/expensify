@@ -48,6 +48,7 @@
 
 .nav-menu h1 {
 	font-size: 1.5rem;
+	text-transform: capitalize;
 }
 
 @keyframes slide-down {

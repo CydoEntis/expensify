@@ -1,37 +1,20 @@
 import React, { useContext } from 'react';
-import ExpensesContext from '../../contexts/ExpensesContext';
+import UserContext from '../../contexts/UserContext';
 
 import ExpenseItem from './ExpenseItems/ExpenseItem';
 
 import styles from './ExpensesList.module.css';
 
-const month = [
-	'January',
-	'Febuary',
-	'March',
-	'April',
-	'May',
-	'June',
-	'July',
-	'August',
-	'September',
-	'October',
-	'November',
-	'December',
-];
+const ExpensesList = ({ filterMonth, filterYear }) => {
+	const userCtx = useContext(UserContext);
 
-const ExpensesList = (props) => {
-	const expensesCtx = useContext(ExpensesContext);
-
-	const filteredExpenses = expensesCtx.expenses.filter((expense) => {
+	const filteredExpenses = userCtx.monthlyExpenses.filter((expense) => {
 		const splitDate = expense.date.split(' ');
-		const expenseDate = splitDate[0];
-		let selectedMonth = props.filterMonth;
-		if (selectedMonth === '') {
-			selectedMonth = month[new Date().getMonth()];
-		}
+		const month = splitDate[0];
+		// const year = splitDate[2];
 
-		if (expenseDate === selectedMonth) return expense;
+		// return month === filterMonth && year === filterYear;
+		return month === filterMonth;
 	});
 
 	const newExpenses = filteredExpenses;

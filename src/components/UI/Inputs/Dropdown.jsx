@@ -39,11 +39,7 @@ const Dropdown = (props) => {
 				</div>
 				<div className={styles.dropdown__actions}>
 					<p>
-						{open ? (
-							<i className="bx bx-chevron-left"></i>
-						) : (
-							<i className="bx bx-chevron-right"></i>
-						)}
+						{open ? <i className="bx bx-chevron-up"></i> : <i className="bx bx-chevron-down"></i>}
 					</p>
 				</div>
 			</div>

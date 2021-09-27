@@ -103,17 +103,17 @@ const LoginForm = ({ toggleAuthOption }) => {
 				{passwordError}
 				{invalidLogin}
 				<div className={formStyles['form-controls']}>
-					<Button type={'button'} className={buttonStyles['btn-primary']}>
+					<Button type={'button'} className={buttonStyles['btn-secondary']}>
 						Cancel
 					</Button>
-					<Button type={'submit'} className={buttonStyles['btn-secondary']}>
+					<Button type={'submit'} className={buttonStyles['btn-primary']}>
 						Login
 					</Button>
 				</div>
+				<p className={formStyles['form-container--redirect']} onClick={toggleAuthOption}>
+					Not a member? <span>Sign up here!</span>
+				</p>
 			</form>
-			<p className={formStyles['form-container--redirect']} onClick={toggleAuthOption}>
-				Already signed up? <span>Login here!</span>
-			</p>
 		</div>
 	);
 };

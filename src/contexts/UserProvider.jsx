@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { getUserProfile, loadFromLocalStorage } from '../helpers/helpers';
+import { getUserProfile } from '../helpers/helpers';
 import UserContext from './UserContext';
 
 const UserProvider = ({ children }) => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [username, setUsername] = useState('User');
 	const [password, setPassword] = useState('User');
-	const [monthlyIncome, setMonthlyIncome] = useState(5000);
+	const [income, setIncome] = useState(5000);
 	const [monthlyExpenses, setMonthlyExpenses] = useState([]);
 
 	useEffect(() => {
@@ -16,21 +16,21 @@ const UserProvider = ({ children }) => {
 			const parsedData = JSON.parse(data);
 			setIsLoggedIn(parsedData.isLoggedIn);
 			setUsername(parsedData.username);
-			setMonthlyIncome(parsedData.monthlyIncome);
+			setIncome(parsedData.income);
 			setMonthlyExpenses(parsedData.monthlyExpenses);
 		} else {
 			return;
 		}
-	}, []);
+	}, [isLoggedIn, setIsLoggedIn, setUsername, setIncome, setMonthlyExpenses]);
 
 	const loginHandler = () => {
+		setIsLoggedIn(true);
+
 		const data = getUserProfile();
 
 		const updatedData = { ...data, isLoggedIn: true };
 
 		localStorage.setItem('expensifyUser', JSON.stringify(updatedData));
-
-		setIsLoggedIn(true);
 	};
 
 	const logoutHandler = () => {
@@ -51,8 +51,8 @@ const UserProvider = ({ children }) => {
 		setPassword(password);
 	};
 
-	const monthlyIncomeHandler = (monthlyIncom) => {
-		setMonthlyIncome(monthlyIncome);
+	const incomeHandler = (monthlyIncom) => {
+		setIncome(income);
 	};
 
 	const monthlyExpensesHandler = (monthlyExpenses) => {
@@ -61,18 +61,31 @@ const UserProvider = ({ children }) => {
 		});
 	};
 
+	const addExpenseHandler = (expense) => {
+		setMonthlyExpenses((prevExpenses) => {
+			return [expense, ...prevExpenses];
+		});
+	};
+
+	const removeExpenseHandler = (id) => {
+		const updatedExpenses = monthlyExpenses.filter((expense) => expense.id !== id);
+		setMonthlyExpenses(updatedExpenses);
+	};
+
 	const userContext = {
 		isLoggedIn,
 		username,
 		password,
-		monthlyIncome,
+		income,
 		monthlyExpenses,
 		loginHandler,
 		logoutHandler,
 		usernameHandler,
 		passwordHandler,
-		monthlyIncomeHandler,
+		incomeHandler,
 		monthlyExpensesHandler,
+		addExpenseHandler,
+		removeExpenseHandler,
 	};
 
 	return <UserContext.Provider value={userContext}>{children}</UserContext.Provider>;

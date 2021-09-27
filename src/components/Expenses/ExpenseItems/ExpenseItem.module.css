@@ -1,6 +1,6 @@
 .expense-item {
 	display: flex;
-	border-bottom: 1px solid #4e5664;
+	border-bottom: 1px solid var(--accent-quaternary);
 }
 
 .expense-item--container {
@@ -9,10 +9,6 @@
 	width: 100%;
 	padding: 0.5rem 0;
 }
-
-/* .expense-item--container:last-child {
-	border: none;
-} */
 
 .expense-item--flex {
 	display: flex;
@@ -33,7 +29,7 @@
 }
 
 .expense-item__cost {
-	color: #e97d7d;
+	color: var(--color-error);
 	font-size: 1.1rem;
 	text-align: right;
 }
@@ -46,7 +42,7 @@
 }
 
 .expense-item--delete-btn {
-	color: var(--text-error);
+	color: var(--color-error);
 	border: none;
 	outline: none;
 	display: flex;

@@ -1,6 +1,7 @@
 .dropdown {
 	position: relative;
 	width: 100%;
+	min-width: 115px;
 	height: 5vh;
 	min-height: 1.5rem;
 	background: transparent;
@@ -27,12 +28,14 @@
 .dropdown__list {
 	position: absolute;
 	height: 45vh;
+	min-width: 115px;
 	width: 100%;
 	background: var(--color-primary-alt);
 	border-radius: 0.25rem;
 	overflow-y: auto;
 	overflow-x: hidden;
 	animation: slide-down 300ms ease-out forwards;
+	z-index: 99;
 }
 
 .dropdown i {
@@ -46,10 +49,10 @@
 .dropdown__item button {
 	padding: 0.3rem;
 	border: none;
-	color: var(--color-primary);
-	background-color: transparent;
 	margin: 0.15rem 0;
 	font-size: 1.25rem;
+	color: var(--color-primary);
+	background-color: transparent;
 }
 
 @keyframes slide-down {

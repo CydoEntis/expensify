@@ -30,22 +30,22 @@ const SignUpForm = ({ toggleAuthOption }) => {
 	} = useInput(isNotEmpty);
 
 	const {
-		value: monthlyIncomeValue,
-		isValid: monthlyIncomeIsValid,
-		hasError: monthlyIncomeHasError,
-		inputValueChangeHandler: monthlyIncomeChangeHandler,
-		inputBlurHandler: monthlyIncomeBlurHandler,
-		resetInputHandler: resetMonthlyIncomeHandler,
+		value: incomeValue,
+		isValid: incomeIsValid,
+		hasError: incomeHasError,
+		inputValueChangeHandler: incomeChangeHandler,
+		inputBlurHandler: incomeBlurHandler,
+		resetInputHandler: resetIncomeHandler,
 	} = useInput(isNotEmpty);
 
 	const resetForm = () => {
 		resetUsernameHandler();
 		resetPasswordHandler();
-		resetMonthlyIncomeHandler();
+		resetIncomeHandler();
 	};
 
 	let formIsValid;
-	if (usernameIsValid && passwordIsValid && monthlyIncomeIsValid) {
+	if (usernameIsValid && passwordIsValid && incomeIsValid) {
 		formIsValid = true;
 	}
 
@@ -58,7 +58,7 @@ const SignUpForm = ({ toggleAuthOption }) => {
 			isLoggedIn: true,
 			username: usernameValue,
 			password: passwordValue,
-			monthlyIncome: monthlyIncomeValue,
+			income: incomeValue,
 			monthlyExpenses: [],
 		};
 
@@ -75,7 +75,7 @@ const SignUpForm = ({ toggleAuthOption }) => {
 
 	const usernameInputClasses = toggleInputError(usernameHasError);
 	const passwordInputClasses = toggleInputError(passwordHasError);
-	const monthlyIncomeInputClasses = toggleInputError(monthlyIncomeHasError);
+	const incomeInputClasses = toggleInputError(incomeHasError);
 
 	const usernameError = usernameHasError && (
 		<ErrorMessage>Username must be at least 3 characters long.</ErrorMessage>
@@ -85,7 +85,7 @@ const SignUpForm = ({ toggleAuthOption }) => {
 		<ErrorMessage>Password must be atleast 5 characters long.</ErrorMessage>
 	);
 
-	const monthlyIncomeError = monthlyIncomeHasError && (
+	const monthlyIncomeError = incomeHasError && (
 		<ErrorMessage>Monthly income must be at least $100</ErrorMessage>
 	);
 
@@ -115,26 +115,26 @@ const SignUpForm = ({ toggleAuthOption }) => {
 				/>
 				{passwordError}
 				<input
-					className={monthlyIncomeInputClasses}
+					className={incomeInputClasses}
 					type="number"
-					placeholder="Monthly Income"
-					value={monthlyIncomeValue}
-					onChange={monthlyIncomeChangeHandler}
-					onBlur={monthlyIncomeBlurHandler}
+					placeholder="Yearly Income"
+					value={incomeValue}
+					onChange={incomeChangeHandler}
+					onBlur={incomeBlurHandler}
 				/>
 				{monthlyIncomeError}
 				<div className={formStyles['form-controls']}>
-					<Button type={'button'} className={buttonStyles['btn-primary']}>
+					<Button type={'button'} className={buttonStyles['btn-secondary']}>
 						Cancel
 					</Button>
-					<Button type={'submit'} className={buttonStyles['btn-secondary']}>
+					<Button type={'submit'} className={buttonStyles['btn-primary']}>
 						Sign Up
 					</Button>
 				</div>
+				<p className={formStyles['form-container--redirect']} onClick={toggleAuthOption}>
+					Already signed up? <span>Login here!</span>
+				</p>
 			</form>
-			<p className={formStyles['form-container--redirect']} onClick={toggleAuthOption}>
-				Already signed up? <span>Login here!</span>
-			</p>
 		</div>
 	);
 };
