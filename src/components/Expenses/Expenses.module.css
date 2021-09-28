@@ -1,11 +1,32 @@
 .expenses {
 	width: 100%;
 	height: calc(65vh - 7vh - 40px);
-	max-height: calc(65vh - 7vh - 40px);
 	padding: 0.5rem;
 	padding-bottom: 3rem;
 	background: var(--color-primary);
 	overflow-y: auto;
+	scrollbar-color: #242931 var(--color-accent-primary);
+	scrollbar-width: 10px;
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #242931;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: var(--color-accent-primary);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	opacity: 0.75;
 }
 
 @media (min-width: 768px) {
