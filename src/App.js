@@ -94,37 +94,35 @@ function App() {
 		<UserProvider>
 			<div className={styles.App}>
 				{!userCtx.isLoggedIn && <Auth />}
-				<div className={styles.wrapper}>
-					{<NavBar showNavMenu={showNavMenu} onClick={toggleNavMenu} />}
-					<Budget
-						monthValue={monthValue || month[new Date().getMonth()]}
-						yearValue={yearValue || new Date().getFullYear().toString()}
+				{<NavBar showNavMenu={showNavMenu} onClick={toggleNavMenu} />}
+				<Budget
+					monthValue={monthValue || month[new Date().getMonth()]}
+					yearValue={yearValue || new Date().getFullYear().toString()}
+				/>
+				<div className={styles.filters}>
+					<ExpensesFilter
+						defaultVal={month[new Date().getMonth()]}
+						selections={MONTH_SELECTION}
+						value={monthValue}
+						id={monthId}
+						onChange={monthChangeHandler}
+						onBlur={monthBlurHandler}
 					/>
-					<div className={styles.filters}>
-						<ExpensesFilter
-							defaultVal={month[new Date().getMonth()]}
-							selections={MONTH_SELECTION}
-							value={monthValue}
-							id={monthId}
-							onChange={monthChangeHandler}
-							onBlur={monthBlurHandler}
-						/>
-						<ExpensesFilter
-							defaultVal={new Date().getFullYear()}
-							selections={YEAR_SELECTION}
-							value={yearValue}
-							id={yearId}
-							onChange={yearChangeHandler}
-							onBlur={yearBlurHandler}
-						/>
-					</div>
-					<Expenses
-						filterMonth={monthValue || month[new Date().getMonth().toString()]}
-						filterYear={yearValue || new Date().getFullYear().toString()}
+					<ExpensesFilter
+						defaultVal={new Date().getFullYear()}
+						selections={YEAR_SELECTION}
+						value={yearValue}
+						id={yearId}
+						onChange={yearChangeHandler}
+						onBlur={yearBlurHandler}
 					/>
-					{showExpenseForm && <ExpenseForm onClose={toggleExpenseFormHandler} />}
-					{!showNavMenu && <AddExpenseBtn onToggleForm={toggleExpenseFormHandler} />}
 				</div>
+				<Expenses
+					filterMonth={monthValue || month[new Date().getMonth().toString()]}
+					filterYear={yearValue || new Date().getFullYear().toString()}
+				/>
+				{showExpenseForm && <ExpenseForm onClose={toggleExpenseFormHandler} />}
+				{!showNavMenu && <AddExpenseBtn onToggleForm={toggleExpenseFormHandler} />}
 			</div>
 		</UserProvider>
 	);
