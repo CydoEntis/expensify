@@ -117,7 +117,7 @@ const SignUpForm = ({ toggleAuthOption }) => {
 				<input
 					className={monthlyBudgetInputClasses}
 					type="number"
-					placeholder="Yearly monthlyBudget"
+					placeholder="Monthly Budget"
 					value={monthlyBudgetValue}
 					onChange={monthlyBudgetChangeHandler}
 					onBlur={monthlyBudgetBlurHandler}
