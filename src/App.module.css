@@ -17,6 +17,9 @@
 
 @media (min-width: 768px) {
 	.App {
+		margin: 1.5rem auto;
+		height: 95vh;
+		border-radius: 0.5rem;
 		max-width: 730px;
 		background: none;
 	}

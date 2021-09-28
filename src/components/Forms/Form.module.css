@@ -14,9 +14,8 @@
 	margin: 0 auto;
 	padding: 0.5rem;
 	background: var(--color-secondary);
-
-	/* clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%); */
 	animation: slide-down 600ms ease-out forwards;
+	/* clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%); */
 }
 
 .form-container--title {

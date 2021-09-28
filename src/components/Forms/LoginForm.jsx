@@ -103,7 +103,7 @@ const LoginForm = ({ toggleAuthOption }) => {
 				{passwordError}
 				{invalidLogin}
 				<div className={formStyles['form-controls']}>
-					<Button type={'button'} className={buttonStyles['btn-secondary']}>
+					<Button type={'button'} className={buttonStyles['btn-secondary']} onClick={resetForm}>
 						Cancel
 					</Button>
 					<Button type={'submit'} className={buttonStyles['btn-primary']}>
