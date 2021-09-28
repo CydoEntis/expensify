@@ -13,7 +13,8 @@
 	height: 90vh;
 	margin: 0 auto;
 	padding: 0.5rem;
-	background: var(--color-primary-alt);
+	background: var(--color-secondary);
+
 	clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
 	animation: slide-down 600ms ease-out forwards;
 }
@@ -25,11 +26,11 @@
 }
 
 .form-container--title > span {
-	color: var(--color-secondary);
+	color: var(--color-accent-primary);
 	font-size: 2.5rem;
 }
 
-.form-dropdown {
+.form-dropdown p {
 	font-size: 1.25rem;
 	color: var(--color-primary) !important;
 }
@@ -44,8 +45,8 @@
 }
 
 .form-container input:focus {
-	border: 1px solid var(--color-secondary);
-	outline: var(--color-secondary);
+	border: 1px solid var(--color-accent-primary);
+	outline: var(--color-accent-primary);
 	outline-width: 2px;
 }
 
@@ -62,7 +63,7 @@
 }
 
 .form-container--redirect span {
-	color: var(--color-secondary);
+	color: var(--color-accent-primary);
 	background: var(--color-primary);
 	border: 1px solid var(--color-primary);
 	padding: 0.25rem 0.75rem;
@@ -72,7 +73,7 @@
 }
 
 .form-container--redirect span:hover {
-	color: var(--color-secondary);
+	color: var(--color-accent-primary);
 	border: var(--color-primary) solid 1px;
 	background: #fff;
 }
@@ -100,5 +101,32 @@
 	to {
 		opacity: 0;
 		transform: translateY(-50rem);
+	}
+}
+
+@media (min-width: 411px) {
+	.form-container--title > span {
+		font-size: 2.5rem;
+	}
+
+	.form-dropdown p {
+		font-size: 1.75rem;
+	}
+
+	.form-container input {
+		font-size: 1.75rem;
+		padding: 0.5rem;
+		margin: 1rem 0;
+	}
+
+	.form-container--redirect {
+		margin-top: 2rem;
+		font-size: 1.07rem;
+		text-align: center;
+	}
+
+	.form-container--redirect span {
+		padding: 0.25rem 0.75rem;
+		border-radius: 0.25rem;
 	}
 }

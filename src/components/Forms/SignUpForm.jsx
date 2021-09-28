@@ -30,22 +30,22 @@ const SignUpForm = ({ toggleAuthOption }) => {
 	} = useInput(isNotEmpty);
 
 	const {
-		value: incomeValue,
-		isValid: incomeIsValid,
-		hasError: incomeHasError,
-		inputValueChangeHandler: incomeChangeHandler,
-		inputBlurHandler: incomeBlurHandler,
-		resetInputHandler: resetIncomeHandler,
+		value: monthlyBudgetValue,
+		isValid: monthlyBudgetIsValid,
+		hasError: monthlyBudgetHasError,
+		inputValueChangeHandler: monthlyBudgetChangeHandler,
+		inputBlurHandler: monthlyBudgetBlurHandler,
+		resetInputHandler: resetMonthlyBudgetHandler,
 	} = useInput(isNotEmpty);
 
 	const resetForm = () => {
 		resetUsernameHandler();
 		resetPasswordHandler();
-		resetIncomeHandler();
+		resetMonthlyBudgetHandler();
 	};
 
 	let formIsValid;
-	if (usernameIsValid && passwordIsValid && incomeIsValid) {
+	if (usernameIsValid && passwordIsValid && monthlyBudgetIsValid) {
 		formIsValid = true;
 	}
 
@@ -58,7 +58,7 @@ const SignUpForm = ({ toggleAuthOption }) => {
 			isLoggedIn: true,
 			username: usernameValue,
 			password: passwordValue,
-			income: incomeValue,
+			monthlyBudget: monthlyBudgetValue,
 			monthlyExpenses: [],
 		};
 
@@ -75,7 +75,7 @@ const SignUpForm = ({ toggleAuthOption }) => {
 
 	const usernameInputClasses = toggleInputError(usernameHasError);
 	const passwordInputClasses = toggleInputError(passwordHasError);
-	const incomeInputClasses = toggleInputError(incomeHasError);
+	const monthlyBudgetInputClasses = toggleInputError(monthlyBudgetHasError);
 
 	const usernameError = usernameHasError && (
 		<ErrorMessage>Username must be at least 3 characters long.</ErrorMessage>
@@ -85,8 +85,8 @@ const SignUpForm = ({ toggleAuthOption }) => {
 		<ErrorMessage>Password must be atleast 5 characters long.</ErrorMessage>
 	);
 
-	const monthlyIncomeError = incomeHasError && (
-		<ErrorMessage>Monthly income must be at least $100</ErrorMessage>
+	const monthlymonthlyBudgetError = monthlyBudgetHasError && (
+		<ErrorMessage>Monthly monthlyBudget must be at least $100</ErrorMessage>
 	);
 
 	return (
@@ -115,14 +115,14 @@ const SignUpForm = ({ toggleAuthOption }) => {
 				/>
 				{passwordError}
 				<input
-					className={incomeInputClasses}
+					className={monthlyBudgetInputClasses}
 					type="number"
-					placeholder="Yearly Income"
-					value={incomeValue}
-					onChange={incomeChangeHandler}
-					onBlur={incomeBlurHandler}
+					placeholder="Yearly monthlyBudget"
+					value={monthlyBudgetValue}
+					onChange={monthlyBudgetChangeHandler}
+					onBlur={monthlyBudgetBlurHandler}
 				/>
-				{monthlyIncomeError}
+				{monthlymonthlyBudgetError}
 				<div className={formStyles['form-controls']}>
 					<Button type={'button'} className={buttonStyles['btn-secondary']}>
 						Cancel

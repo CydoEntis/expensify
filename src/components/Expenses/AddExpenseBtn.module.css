@@ -12,8 +12,8 @@
 	align-items: center;
 	position: absolute;
 
-	background: var(--color-secondary);
-	color: var(--color-primary-alt);
+	background: var(--color-accent-primary);
+	color: var(--color-secondary);
 
 	border-radius: 50%;
 
@@ -25,9 +25,6 @@
 	height: 7vh;
 	width: 100%;
 	background: #242931;
-}
-
-.btn-wrapper {
 }
 
 .btn--add i {

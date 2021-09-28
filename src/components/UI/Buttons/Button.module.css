@@ -30,7 +30,7 @@
 	padding: 0.75rem;
 	color: var(--color-primary);
 	border: 1px solid var(--color-primary);
-	background: var(--color-primary-alt);
+	background: var(--color-secondary);
 }
 
 /* .btn:hover {

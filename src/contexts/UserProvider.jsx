@@ -6,7 +6,7 @@ const UserProvider = ({ children }) => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [username, setUsername] = useState('User');
 	const [password, setPassword] = useState('User');
-	const [income, setIncome] = useState(5000);
+	const [monthlyBudget, setMonthlyBudget] = useState(5000);
 	const [monthlyExpenses, setMonthlyExpenses] = useState([]);
 
 	useEffect(() => {
@@ -16,12 +16,12 @@ const UserProvider = ({ children }) => {
 			const parsedData = JSON.parse(data);
 			setIsLoggedIn(parsedData.isLoggedIn);
 			setUsername(parsedData.username);
-			setIncome(parsedData.income);
+			setMonthlyBudget(parsedData.monthlyBudget);
 			setMonthlyExpenses(parsedData.monthlyExpenses);
 		} else {
 			return;
 		}
-	}, [isLoggedIn, setIsLoggedIn, setUsername, setIncome, setMonthlyExpenses]);
+	}, [isLoggedIn, setIsLoggedIn, setUsername, setMonthlyBudget, setMonthlyExpenses]);
 
 	const loginHandler = () => {
 		setIsLoggedIn(true);
@@ -51,8 +51,8 @@ const UserProvider = ({ children }) => {
 		setPassword(password);
 	};
 
-	const incomeHandler = (monthlyIncom) => {
-		setIncome(income);
+	const monthlyBudgetHandler = (monthlyIncom) => {
+		setMonthlyBudget(monthlyBudget);
 	};
 
 	const monthlyExpensesHandler = (monthlyExpenses) => {
@@ -76,13 +76,13 @@ const UserProvider = ({ children }) => {
 		isLoggedIn,
 		username,
 		password,
-		income,
+		monthlyBudget,
 		monthlyExpenses,
 		loginHandler,
 		logoutHandler,
 		usernameHandler,
 		passwordHandler,
-		incomeHandler,
+		monthlyBudgetHandler,
 		monthlyExpensesHandler,
 		addExpenseHandler,
 		removeExpenseHandler,

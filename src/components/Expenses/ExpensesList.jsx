@@ -11,10 +11,9 @@ const ExpensesList = ({ filterMonth, filterYear }) => {
 	const filteredExpenses = userCtx.monthlyExpenses.filter((expense) => {
 		const splitDate = expense.date.split(' ');
 		const month = splitDate[0];
-		// const year = splitDate[2];
+		const year = splitDate[2];
 
-		// return month === filterMonth && year === filterYear;
-		return month === filterMonth;
+		return month === filterMonth && year === filterYear;
 	});
 
 	const newExpenses = filteredExpenses;

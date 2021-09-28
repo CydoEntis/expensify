@@ -27,20 +27,20 @@ const MONTH_SELECTION = [
 	{ id: 12, value: 'December' },
 ];
 
-// const YEAR_SELECTION = [
-// 	{ id: 1, value: '2021' },
-// 	{ id: 2, value: '2022' },
-// 	{ id: 3, value: '2023' },
-// 	{ id: 4, value: '2024' },
-// 	{ id: 5, value: '2025' },
-// 	{ id: 6, value: '2026' },
-// 	{ id: 7, value: '2027' },
-// 	{ id: 8, value: '2027' },
-// 	{ id: 9, value: '2028' },
-// 	{ id: 10, value: '2029' },
-// 	{ id: 11, value: '2030' },
-// 	{ id: 12, value: '2031' },
-// ];
+const YEAR_SELECTION = [
+	{ id: 1, value: '2021' },
+	{ id: 2, value: '2022' },
+	{ id: 3, value: '2023' },
+	{ id: 4, value: '2024' },
+	{ id: 5, value: '2025' },
+	{ id: 6, value: '2026' },
+	{ id: 7, value: '2027' },
+	{ id: 8, value: '2027' },
+	{ id: 9, value: '2028' },
+	{ id: 10, value: '2029' },
+	{ id: 11, value: '2030' },
+	{ id: 12, value: '2031' },
+];
 
 const month = [
 	'January',
@@ -77,12 +77,12 @@ function App() {
 		inputBlurHandler: monthBlurHandler,
 	} = useInput(isNotEmpty);
 
-	// const {
-	// 	value: yearValue,
-	// 	selectionId: yearId,
-	// 	dropdownHandler: yearChangeHandler,
-	// 	inputBlurHandler: yearBlurHandler,
-	// } = useInput(isNotEmpty);
+	const {
+		value: yearValue,
+		selectionId: yearId,
+		dropdownHandler: yearChangeHandler,
+		inputBlurHandler: yearBlurHandler,
+	} = useInput(isNotEmpty);
 
 	const toggleExpenseFormHandler = () => {
 		setShowExpenseForm((prevState) => {
@@ -90,15 +90,16 @@ function App() {
 		});
 	};
 
-	console.log('Is Logged In: ', userCtx.isLoggedIn);
-
 	return (
 		<UserProvider>
 			<div className={styles.App}>
 				{!userCtx.isLoggedIn && <Auth />}
 				<div>
 					{<NavBar showNavMenu={showNavMenu} onClick={toggleNavMenu} />}
-					<Budget />
+					<Budget
+						monthValue={monthValue || month[new Date().getMonth()]}
+						yearValue={yearValue || new Date().getFullYear().toString()}
+					/>
 					<div className={styles.filters}>
 						<ExpensesFilter
 							defaultVal={month[new Date().getMonth()]}
@@ -108,18 +109,18 @@ function App() {
 							onChange={monthChangeHandler}
 							onBlur={monthBlurHandler}
 						/>
-						{/* <ExpensesFilter
+						<ExpensesFilter
 							defaultVal={new Date().getFullYear()}
 							selections={YEAR_SELECTION}
 							value={yearValue}
 							id={yearId}
 							onChange={yearChangeHandler}
 							onBlur={yearBlurHandler}
-						/> */}
+						/>
 					</div>
 					<Expenses
 						filterMonth={monthValue || month[new Date().getMonth().toString()]}
-						// filterYear={yearValue || new Date().getFullYear().toString()}
+						filterYear={yearValue || new Date().getFullYear().toString()}
 					/>
 					{showExpenseForm && <ExpenseForm onClose={toggleExpenseFormHandler} />}
 					{!showNavMenu && <AddExpenseBtn onToggleForm={toggleExpenseFormHandler} />}

@@ -4,12 +4,9 @@
 	--font-primary: 'Open Sans';
 	--font-secondary: 'sans-serif';
 	--color-primary: #39414e;
-	--color-primary-alt: #fff;
-	--color-secondary: #59daa4;
-	--accent-primary: #f478b8;
-	--accent-secondary: #8378f4;
-	--accent-tertiary: #59d4d9;
-	--accent-quaternary: #858b97;
+	--color-secondary: #fff;
+	--color-accent-primary: #8378f4;
+	--color-accent-secondary: #858b97;
 	--color-error: #e97d7d;
 }
 
@@ -25,14 +22,29 @@ body {
 }
 
 h2 {
-	color: var(--color-primary-alt);
+	font-size: 1rem;
+	color: var(--color-secondary);
 }
 
 h3,
 p {
-	color: var(--accent-quaternary);
+	color: var(--color-accent-secondary);
 }
 
 i {
 	font-size: 2.25rem;
+}
+
+@media (max-width: 411px) {
+	h2 {
+	}
+
+	h3,
+	p {
+		color: var(--color-accent-secondary);
+	}
+
+	i {
+		font-size: 2.25rem;
+	}
 }
