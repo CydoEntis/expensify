@@ -29,3 +29,13 @@
 .add-expense--btn i {
 	font-weight: bold;
 }
+
+@media (min-width: 768px) {
+	.add-expense--container {
+		width: auto;
+		height: auto;
+		position: absolute;
+		right: 10%;
+		bottom: 3%;
+	}
+}

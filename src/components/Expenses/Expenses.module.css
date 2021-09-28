@@ -10,8 +10,9 @@
 @media (min-width: 768px) {
 	.expenses {
 		width: 90%;
-		/* height: calc(65vh - 7vh - 40px); */
-		height: 40vh;
+		max-width: 800px;
+		border-radius: 0.5rem;
+		height: 45vh;
 		margin: 0 auto;
 	}
 }

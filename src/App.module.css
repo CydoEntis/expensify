@@ -9,13 +9,20 @@
 
 .filters {
 	width: clamp(300px, 90%, 800px);
+	background: var(--color-primary);
 	margin: 0 auto;
 	display: flex;
 	padding: 0.5rem;
 }
 
 @media (min-width: 768px) {
+	.App {
+		max-width: 730px;
+		background: none;
+	}
+
 	.filters {
-		margin: 0 auto;
+		border-radius: 0.5rem;
+		margin: 0.5rem auto;
 	}
 }

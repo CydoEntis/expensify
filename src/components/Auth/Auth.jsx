@@ -3,8 +3,6 @@ import UserContext from '../../contexts/UserContext';
 import LoginForm from '../Forms/LoginForm';
 import SignUpForm from '../Forms/SignUpForm';
 
-import styles from './Auth.module.css';
-
 const Auth = () => {
 	const userCtx = useContext(UserContext);
 	const [signUpVisible, setSignUpVisible] = useState(true);
@@ -16,7 +14,7 @@ const Auth = () => {
 	};
 
 	return (
-		<div className={styles.auth}>
+		<div>
 			{signUpVisible && !userCtx.isLoggedIn && <LoginForm toggleAuthOption={toggleAuthOption} />}
 			{!signUpVisible && !userCtx.isLoggedIn && <SignUpForm toggleAuthOption={toggleAuthOption} />}
 		</div>
