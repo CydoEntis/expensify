@@ -22,24 +22,18 @@
 	font-size: clamp(1rem, 4vw, 1.5rem);
 }
 
-@keyframes slide-down {
-	from {
-		opacity: 0;
-		transform: translateY(-50rem);
+@media (min-width: 768px) {
+	.budget {
+		position: relative;
+		width: 90%;
+		max-width: 800px;
+		height: 35vh;
+		margin: 0 auto;
+		border-radius: 0.5rem;
+		clip-path: none;
 	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
 
-@keyframes slide-up {
-	from {
-		opacity: 1;
-		transform: translateY(0rem);
-	}
-	to {
-		opacity: 0;
-		transform: translateY(-50rem);
+	.budget--spendings {
+		font-size: clamp(1rem, 4vw, 1.5rem);
 	}
 }

@@ -94,7 +94,7 @@ function App() {
 		<UserProvider>
 			<div className={styles.App}>
 				{!userCtx.isLoggedIn && <Auth />}
-				<div>
+				<div className={styles.wrapper}>
 					{<NavBar showNavMenu={showNavMenu} onClick={toggleNavMenu} />}
 					<Budget
 						monthValue={monthValue || month[new Date().getMonth()]}

@@ -8,8 +8,14 @@
 }
 
 .filters {
-	width: clamp(300px, 100%, 800px);
+	width: clamp(300px, 90%, 800px);
 	margin: 0 auto;
 	display: flex;
 	padding: 0.5rem;
+}
+
+@media (min-width: 768px) {
+	.filters {
+		margin: 0 auto;
+	}
 }

@@ -61,3 +61,53 @@
 		transform: translateY(0);
 	}
 }
+
+@media (min-width: 768px) {
+	.navbar {
+		position: relative;
+		margin: 1rem auto;
+		width: 95%;
+		border-radius: 0.5rem;
+		background: var(--color-secondary);
+	}
+
+	.nav-btn {
+		color: var(--color-primary);
+	}
+
+	.nav-btn--alt {
+		color: var(--color-primary);
+	}
+
+	.nav-btn i {
+		color: var(--color-primary);
+		padding: 0.5rem;
+		font-size: 2.5rem;
+	}
+
+	.nav-menu {
+		position: absolute;
+		display: flex;
+		justify-content: center;
+		height: 15vh;
+		width: 100%;
+		border-radius: 0 0 0.5rem 0.5rem;
+		z-index: 100;
+		animation: slide-down 300ms ease-out forwards;
+	}
+
+	.nav-menu footer {
+		display: none;
+	}
+
+	@keyframes slide-down {
+		from {
+			opacity: 0;
+			transform: translateY(-1rem);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(1rem);
+		}
+	}
+}
