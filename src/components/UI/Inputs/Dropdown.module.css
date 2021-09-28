@@ -53,6 +53,12 @@
 	font-size: 1.25rem;
 	color: var(--color-primary);
 	background-color: transparent;
+	border-left: 5px solid var(--color-secondary);
+	cursor: pointer;
+}
+
+.dropdown__item button:hover {
+	border-left: 5px solid var(--color-primary);
 }
 
 @keyframes slide-down {
