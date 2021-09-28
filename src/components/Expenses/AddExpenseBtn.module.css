@@ -1,4 +1,11 @@
-.btn--add {
+.add-expense--container {
+	position: relative;
+	height: 7vh;
+	width: 100%;
+	background: #242931;
+}
+
+.add-expense--btn {
 	width: 65px;
 	height: 65px;
 
@@ -16,28 +23,9 @@
 	color: var(--color-secondary);
 
 	border-radius: 50%;
-
 	font-size: 2rem;
 }
 
-.wrapper {
-	position: relative;
-	height: 7vh;
-	width: 100%;
-	background: #242931;
-}
-
-.btn--add i {
+.add-expense--btn i {
 	font-weight: bold;
-}
-
-@keyframes slide-down {
-	from {
-		opacity: 0;
-		transform: translateY(-50rem);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
 }

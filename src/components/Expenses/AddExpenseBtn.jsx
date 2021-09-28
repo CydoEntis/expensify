@@ -6,12 +6,10 @@ import styles from './AddExpenseBtn.module.css';
 
 const AddExpenseBtn = ({ onToggleForm }) => {
 	return (
-		<div className={styles['wrapper']}>
-			<div className={styles['btn-wrapper']}>
-				<Button onClick={onToggleForm} className={styles['btn--add']}>
-					<i className="bx bx-plus"></i>
-				</Button>
-			</div>
+		<div className={styles['add-expense--container']}>
+			<Button onClick={onToggleForm} className={styles['add-expense--btn']}>
+				<i className="bx bx-plus"></i>
+			</Button>
 		</div>
 	);
 };

@@ -27,21 +27,17 @@ const ExpenseItem = (props) => {
 
 	return (
 		<div className={styles['expense-item']}>
-			<div className={styles['expense-item--container']}>
-				<ExpenseType className={styles['expense-item__type']} type={props.type} />
-				<div className={styles['expense-item--flex']}>
-					<ExpenseName className={styles['expense-item__name']} name={props.name} />
-					<div className={styles['expense-item--wrapper']}>
-						<ExpenseCost className={styles['expense-item__cost']} amount={props.cost} />
-					</div>
-				</div>
-				<ExpenseDate className={styles['expense-item__date']} date={props.date} />
+			<div className={styles['expense-item--flex']}>
+				<ExpenseType className={styles['expense-item--type']} type={props.type} />
+				<Button onClick={removeExpense}>
+					<i className={`${styles['expense-item--options']} bx bx-x`}></i>
+				</Button>
 			</div>
-			<Button className={styles['expense-item--delete-btn']} onClick={removeExpense}>
-				<i className="bx bx-trash-alt"></i>
-				{/* <i className="bx bx-x"></i> */}
-				{/* <i className="bx bx-x-circle"></i> */}
-			</Button>
+			<div className={styles['expense-item--flex']}>
+				<ExpenseName className={styles['expense-item--name']} name={props.name} />
+				<ExpenseCost className={styles['expense-item--cost']} amount={props.cost} />
+			</div>
+			<ExpenseDate className={styles['expense-item--date']} date={props.date} />
 		</div>
 	);
 };

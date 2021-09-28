@@ -30,6 +30,7 @@
 	min-width: 115px;
 	width: 100%;
 	background: var(--color-secondary);
+	border: 1px solid var(--color-primary);
 	border-radius: 0.25rem;
 	overflow-y: auto;
 	overflow-x: hidden;

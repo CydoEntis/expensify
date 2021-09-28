@@ -1,19 +1,8 @@
 .expenses {
-	padding: 0.5rem;
-	height: calc(65vh - 7vh - 40px);
 	width: 100%;
-	overflow: scroll-y;
+	height: calc(65vh - 7vh - 40px);
+	padding: 0.5rem;
 	padding-bottom: 3rem;
 	background: var(--color-primary);
-}
-
-@keyframes slide-down {
-	from {
-		opacity: 0;
-		transform: translateY(-50rem);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+	overflow: scroll-y;
 }

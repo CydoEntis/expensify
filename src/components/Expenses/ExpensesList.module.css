@@ -1,12 +1,15 @@
 .empty {
-	color: #8f8f8f;
 	width: 85%;
 	height: 40vh;
+
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+
 	margin: 0 auto;
+
+	color: #8f8f8f;
 }
 .empty i {
 	color: #8f8f8f;
